@@ -1,0 +1,22 @@
+---
+permalink: manage/update-proxyurl.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以從適用於 VMware vSphere 圖形化使用者介面（ GUI ）的 ONTAP 工具中提供的選項、收集適用於 VMware vSphere 的 ONTAP 工具的記錄檔。技術支援可能會要求您收集記錄檔、以協助疑難排解問題。 
+---
+= 更新 AutoSupport Proxy URL
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更新 AutoSupport Proxy URL ，確保在使用 Proxy 伺服器進行網路存取控制或安全措施的情況下， AutoSupport 功能正常運作。它可讓 AutoSupport 資料透過適當的 Proxy 進行路由，實現安全傳輸與法規遵循。
+
+.步驟
+. 從 vCenter Server 開啟維護主控台。
+. 以維護使用者身分登入。
+. 輸入 1 以選擇 * 應用程式組態 * 。
+. 輸入 4 以選取 * 更新 AutoSupport Proxy URL* 。
+. 輸入 Proxy URL 。
+

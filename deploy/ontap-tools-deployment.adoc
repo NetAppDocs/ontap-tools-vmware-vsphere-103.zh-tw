@@ -1,0 +1,106 @@
+---
+permalink: deploy/ontap-tools-deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: VMware vSphere 應用程式的 ONTAP 工具會部署為小型單一節點，並提供核心服務以支援 NFS 和 VMFS 資料存放區。 
+---
+= 部署適用於 VMware vSphere 的 ONTAP 工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMware vSphere 應用程式的 ONTAP 工具會部署為小型單一節點，並提供核心服務以支援 NFS 和 VMFS 資料存放區。
+
+*開始之前*
+
+VMware 中的內容庫是儲存 VM 範本、 vApp 範本及其他類型檔案的容器物件。使用內容庫進行部署可提供無縫體驗、因為它並不受網路連線能力的限制。
+
+
+NOTE: 您應該將內容庫儲存在共享的資料存放區，以便叢集中的所有主機都能存取。在將應用裝置設定為 HA 組態之前，請先建立內容庫以儲存 OVA 。請勿在部署後刪除內容庫範本。
+
+
+NOTE: 若要稍後啟用 HA 部署，請勿直接在 ESXi 主機上部署裝載 ONTAP 工具的虛擬機器。請改為在叢集或資源集區上部署。
+
+如果您沒有內容庫，請依照下列步驟建立內容庫：
+
+* 在您計畫中建立內容庫 * ，只要使用小型單一節點部署，就不需要建立內容庫。
+
+.  `.zip`從下載包含適用於 VMware vSphere 的 ONTAP 工具二進位檔案（ _.ova_ ）和簽署憑證 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支援網站"^]的檔案。
+. 登入 vSphere 用戶端
+. 選取 vSphere 用戶端功能表，然後選取 * 內容庫 * 。
+. 選取頁面右側的 * 建立 * 。
+. 提供文件庫名稱並建立內容庫。
+. 瀏覽至您建立的內容庫。
+. 選取頁面右側的 * 動作 * 、然後選取 * 匯入項目 * 並匯入 OVA 檔案。
+
+
+
+NOTE: 如需詳細資訊、請參閱 https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["建立及使用內容庫"]部落格。
+
+
+NOTE: 在繼續部署之前，請先將資源清冊上的叢集 Distributed Resource Scheduler （ DRS ）設定為「 conventory 」（保守）。如此可確保 VM 在安裝期間不會移轉。
+
+VMware vSphere 的 ONTAP 工具最初部署為非 HA 設定。若要擴充至 HA 部署，您需要啟用 CPU 熱插拔和記憶體熱插件。您可以在部署程序中執行此步驟，或在部署後編輯 VM 設定。
+
+.步驟
+.  `.zip`從下載包含適用於 VMware vSphere 的 ONTAP 工具二進位檔案（ _.ova_ ）和簽署憑證 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支援網站"^]的檔案。如果您已將 OVA 匯入內容庫，您可以跳過此步驟並繼續下一步。
+. 登入 vSphere 伺服器。
+. 瀏覽至您要部署 OVA 的資源集區，叢集或主機。
++
+
+NOTE: 切勿將適用於 VMware vSphere 虛擬機器的 ONTAP 工具儲存在其管理的 VVols 資料存放區上。
+
+. 您可以從內容庫或本機系統部署 OVA 。
++
+|===
+
+
+| 從本機系統 | 從內容庫 
+
+
+| a. 按一下滑鼠右鍵並選取 * 部署 OVF 範本 ...* 。 b. 從 URL 選擇 OVA 檔案或瀏覽至其位置，然後選取 * 下一步 * 。 | a. 移至內容庫並選取您要部署的文件庫項目。 b. 從此範本中選取 * 「動作」 * > * 「新增虛擬機器」 * 
+|===
+. 在 * 選擇名稱和資料夾 * 欄位中，輸入虛擬機器名稱並選擇其位置。
++
+** 如果您使用的是 vCenter Server 8.0.3 版本，請選取選項 * 自訂此虛擬機器的硬體 * ，此選項將會啟動名為 * 自訂硬體 * 的額外步驟，然後再前往 * 準備完成 * 視窗。
+** 如果您使用的是 vCenter Server 7.0.3 版本，請遵循部署結束時的「後續行動？」一節中的步驟。
+
+
+. 選取電腦資源，然後選取 * 下一步 * 。（可選）選中複選框以 * 自動啓動已部署的 VM* 。
+. 檢閱範本的詳細資料，然後選取 * 下一步 * 。
+. 閱讀並接受授權合約、然後選擇 * 下一步 * 。
+. 選取組態和磁碟格式的儲存設備，然後選取 * 下一步 * 。
+. 選取每個來源網路的目的地網路，然後選取 * 下一步 * 。
+. 在 * 自訂範本 * 視窗中，填寫必填欄位，然後選取 * 下一步 * 。
++
+** 資訊會在安裝期間驗證。如果存在差異，則會在 Web 主控台上顯示錯誤訊息，並提示您修正錯誤。
+** 主機名稱必須包含字母（ A-Z ， a-z ），數字（ 0-9 ）和連字號（ - ）。若要設定雙堆疊，請指定對應至 IPv6 位址的主機名稱。
++
+
+NOTE: 不支援 Pure IPv6 。同時包含 IPv6 和 IPv4 位址的 VLAN 支援混合模式。
+
+
+
+. 使用 vCenter Server 8.0.3 版本時，請在 * 自訂硬體 * 視窗中，啟用 *CPU Hot add* 和 * 記憶體熱插拔 * 選項，以允許 HA 功能。
+. 查看 * 準備完成 * 視窗中的詳細資料、選取 * 完成 * 。
++
+在建立部署工作時、進度會顯示在 vSphere 工作列中。
+
+. 在工作完成後開啟虛擬機器電源。
+
+
+您可以在 VM 的 Web 主控台中追蹤安裝進度。
+
+如果 OVF 表單中有差異，則會出現對話方塊提示您採取修正行動。使用 Tab 鍵瀏覽，進行必要的變更，然後選取「確定」。您有三次嘗試來解決任何問題。如果三次嘗試後問題仍持續發生，安裝程序將會停止，建議您在新的虛擬機器上重試安裝。
+
+.接下來呢？
+如果您的 VMware vSphere 部署有 ONTAP 工具與 vCenter Server 7.0.2 ，請在部署之後遵循這些步驟。
+
+. 登入 vCenter 用戶端
+. 關閉 ONTAP 工具節點。
+. 瀏覽至 * 清單 * 下的 ONTAP 工具 for VMware vSphere 虛擬機器，然後選取 * 編輯設定 * 選項。
+. 在 *CPU* 選項下，選中 *Enable CPU Hot add* （啓用 CPU 熱添加 * ）複選框
+. 在 * 記憶體 * 選項下，勾選 * 記憶體熱插拔 * 的 * 啟用 * 核取方塊。
+

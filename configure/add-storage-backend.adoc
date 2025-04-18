@@ -1,0 +1,60 @@
+---
+permalink: configure/add-storage-backend.html 
+sidebar: sidebar 
+keywords:  
+summary: 儲存設備後端是 ESXi 主機用於資料儲存的系統。 
+---
+= 新增儲存後端
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新增儲存後端可讓您建置 ONTAP 叢集。
+
+*關於此工作*
+
+若要將儲存後端新增至多租戶架構中的全域範圍叢集，請使用 ONTAP 工具管理員新增儲存後端。將儲存後端新增至全域叢集之後，您必須將叢集與所需的 vCenter 租戶建立關聯。vCenter 租戶必須搭載所需的儲存虛擬機器（ Storage Virtual Machines ， SVM ）。這可讓 SVM 使用者配置 vVols 資料存放區。您可以使用 SVM 在 vCenter 中新增儲存設備。
+
+若要將儲存後端新增至本機範圍叢集，請使用 vCenter 伺服器上的 ONTAP 工具外掛程式，直接新增 ONTAP 系統。
+
+[role="tabbed-block"]
+====
+.使用 ONTAP 工具管理器
+--
+
+NOTE: 在多租戶設定中，您可以全域新增儲存後端叢集，並在本機新增 SVM 以使用 SVM 使用者認證。
+
+.步驟
+. 從網路瀏覽器啟動 ONTAP 工具管理員： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期間提供的 VMware vSphere 管理員認證 ONTAP 工具登入。
+. 從側欄中選擇 * 儲存後端 * 。
+. 新增儲存後端，並提供伺服器 IP 位址或 FQDN ，使用者名稱和密碼詳細資料。
++
+
+NOTE: 支援 IPv4 和 IPv6 位址管理階層。
+
+
+
+--
+.使用 vSphere 用戶端使用者介面
+--
+
+NOTE: 當您使用 vSphere 用戶端使用者介面新增儲存後端時， vVols 資料存放區不支援直接新增 SVM 使用者。
+
+. 登入 vSphere 用戶端
+. 在捷徑頁面中，選取外掛程式區段下方的 * NetApp ONTAP tools* 。
+. 從側欄中選擇 * 儲存後端 * 。
+. 新增儲存後端，並提供伺服器 IP 位址，使用者名稱，密碼和連接埠詳細資料。
++
+
+NOTE: 若要直接新增 SVM 使用者，您可以新增叢集型認證，以及 IPv4 和 IPv6 位址管理階層，或是提供 SVM 管理 LIF 的 SVM 型認證。
+
+
+
+.接下來呢？
+清單隨即重新整理、您可以在清單中看到新增的儲存後端。
+
+--
+====

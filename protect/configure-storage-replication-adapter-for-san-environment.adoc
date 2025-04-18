@@ -1,0 +1,70 @@
+---
+permalink: protect/configure-storage-replication-adapter-for-san-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 您應該先設定儲存系統、再執行 Storage Replication Adapter （ SRA ） for VMware Live Site Recovery 。 
+---
+= 為 SAN 和 NAS 環境設定 SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您應該先設定儲存系統、再執行 Storage Replication Adapter （ SRA ） for VMware Live Site Recovery 。
+
+
+
+== 為 SAN 環境設定 SRA
+
+.開始之前
+您應該在受保護的站台和還原站台上安裝下列程式：
+
+* VMware Live Site Recovery
++
+VMware 網站上有安裝 VMware Live Site Recovery 的相關文件。
+
++
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/about-vmware-live-site-recovery-installation-and-configuration.html["關於 VMware Live Site Recovery"]
+
+* SRA
++
+介面卡安裝在 VMware Live Site Recovery 上。
+
+
+
+.步驟
+. 確認主ESXi主機已連線至受保護站台上主要儲存系統的LUN。
+. 驗證 LUN 是否位於 igroup 中 `ostype`、且主儲存系統上的選項設為 _VMware_ 。
+. 確認恢復站台上的 ESXi 主機與儲存虛擬機器（ SVM ）有適當的 iSCSI 連線。次要站台 ESXi 主機應可存取次要站台儲存設備、且主要站台 ESXi 主機應可存取主要站台儲存設備。
++
+您可以透過驗證 ESXi 主機是否已在 SVM 上連接本機 LUN 、或是 `iscsi show initiators` SVM 上的命令來執行此動作。檢查 ESXi 主機中對應 LUN 的 LUN 存取權、以驗證 iSCSI 連線能力。
+
+
+
+
+
+== 為 NAS 環境設定 SRA
+
+.開始之前
+您應該在受保護的站台和還原站台上安裝下列程式：
+
+* VMware Live Site Recovery
++
+有關安裝 VMware Live Site Recovery 的說明文件、請參閱 VMware 網站。
+
++
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/about-vmware-live-site-recovery-installation-and-configuration.html["關於 VMware Live Site Recovery"]
+
+* SRA
++
+介面卡安裝在 VMware Live Site Recovery 和 SRA 伺服器上。
+
+
+
+.步驟
+. 確認受保護站台的資料存放區包含已向vCenter Server註冊的虛擬機器。
+. 確認受保護站台的ESXi主機已從儲存虛擬機器（SVM）掛載NFS匯出磁碟區。
+. 使用 Array Manager 精靈將陣列新增至 VMware Live Site Recovery 時、請確認在 * NFS 位址 * 欄位中指定了有效的位址、例如 NFS 匯出所在的 IP 位址、主機名稱或 FQDN 。
+.  `ping`在恢復站台的每個 ESXi 主機上使用命令、驗證主機是否有 VMkernel 連接埠、可存取用於從 SVM 匯出 NFS 的 IP 位址。
+

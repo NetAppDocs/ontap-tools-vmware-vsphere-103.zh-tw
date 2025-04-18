@@ -1,0 +1,51 @@
+---
+permalink: configure/protect-cluster.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: 適用於 VMware vSphere 的 ONTAP 工具可管理主機叢集的保護。 
+---
+= 使用主機叢集保護來保護
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+適用於 VMware vSphere 的 ONTAP 工具可管理主機叢集的保護。屬於所選 SVM 並掛載於叢集一或多個主機上的所有資料存放區、都會受到主機叢集的保護。
+
+.開始之前
+確保符合下列先決條件：
+
+* 主機叢集只有一個 SVM 的資料存放區。
+* 安裝在主機叢集上的資料存放區不應掛載於叢集外的任何主機上。
+* 主機叢集上安裝的所有資料存放區都必須是含 iSCSI / FC 傳輸協定的 VMFS 資料存放區。不支援含 NVMe / FC 和 NVMe / TCP 傳輸協定的 VVols ， NFS 或 VMFS 資料存放區。
+* 安裝在主機叢集上的 FlexVol / LUN 組成資料存放區、不應屬於任何現有的一致性群組（ CG ）。
+* 主機叢集上掛載的 FlexVol / LUN 組成資料存放區不應是任何現有 SnapMirror 關係的一部分。
+* 主機叢集至少應有一個資料存放區。
+
+
+.步驟
+. 登入 vSphere 用戶端
+. 在主機叢集上按一下滑鼠右鍵、然後選取 * NetApp ONTAP tools* > * Protect Cluster* 。
+. 在 Protect cluster （保護叢集）視窗中、會自動填入資料存放區類型和來源儲存虛擬機器（ VM ）詳細資料。選取資料存放區連結以檢視受保護的資料存放區。
+. 輸入 * 一致性群組名稱 * 。
+. 選取 * 新增關係 * 。
+. 在 * 新增 SnapMirror 關係 * 視窗中、選取 * 目標儲存虛擬機器 * 和 * 原則 * 類型。
++
+原則類型可以是「非同步」或「自動化的 FailOverDuplex 」。
+
++
+當您將 SnapMirror 關係新增為 AutomatedFailOverDuplex 類型原則時，您必須將目標儲存 VM 新增為儲存後端，以部署適用於 VMware vSphere 的 ONTAP 工具。
+
++
+在 AutomatedFailOverDuplex 原則類型中，有統一且不統一的主機組態。當您選取 * 統一主機組態 * 切換按鈕時、主機啟動器群組組組態會在目標站台上隱含複寫。如需詳細資訊、請 link:../concepts/ontap-tools-concepts-terms.html["關鍵概念與詞彙"]參閱。
+
+. 如果您選擇使用非一致的主機組態、請為該叢集內的每個主機選取主機存取（來源 / 目標）。
+. 選取*「Add*」。
+. 在 * 保護叢集 * 視窗中，您無法在建立作業期間編輯受保護的叢集。您可以再次刪除並新增保護。在修改主機叢集保護作業期間，可使用編輯選項。您可以使用省略符號功能表選項來編輯或刪除關聯。
+. 選擇 * 保護 * 按鈕。
++
+vCenter 工作會以工作 ID 詳細資料建立，其進度會顯示在「最近的工作」面板中。這是一項非同步工作；使用者介面只會顯示要求提交狀態，不會等待工作完成。
+
+. 若要檢視受保護的主機叢集、請瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * 。
+

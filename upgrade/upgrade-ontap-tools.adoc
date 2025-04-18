@@ -1,0 +1,180 @@
+---
+permalink: upgrade/upgrade-ontap-tools.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: HA 和非 HA 部署均支援升級。 
+---
+= 從適用於 VMware vSphere 10.x 的 ONTAP 工具升級至 10.3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+HA 和非 HA 部署皆支援升級。支援的升級路徑有：
+
+|===
+
+
+| 適用於 VMware vSphere 10.1 和 10.2 組態的 ONTAP 工具 | 適用於 VMware vSphere 10.3 組態的 ONTAP 工具 
+
+
+| 非 HA 小型 | 非 HA 和先進的小型企業 
+
+
+| 非 HA 媒體 | 非 HA 和進階媒體 
+
+
+| 進階小型 | 非 HA 和先進的小型企業 
+
+
+| 進階媒體 | 非 HA 和進階媒體 
+
+
+| HA Small | HA Small 
+
+
+| HA 媒體 | HA 媒體 
+
+
+| HA 大型 | HA 大型 
+|===
+
+NOTE: 支援從適用於 VMware vSphere 10.1 和 10.2 到 10.3 的 ONTAP 工具升級。不支援從 ONTAP 工具 10.0 直接升級至 10.3 。
+
+*開始之前*
+
+如果是非 HA 升級，請關閉 ONTAP 工具 VM 的電源，如果是 HA 升級，請先關閉第一個節點的電源，然後再對虛擬機器（ VM ）設定進行下列變更。
+
+* 將額外的 100 GB 硬碟新增至每個節點，因為服務資料會儲存在虛擬機器的本機上。
+* 根據部署的風格，變更已關閉電源的 VM 的 CPU 和記憶體。啟用 CPU 和 RAM 的 Hot 外掛程式。
++
+|===
+| 10.3 部署類型 | 每個節點的 CPU （核心） | 每個節點的記憶體（ GB ） | 每個節點的磁碟空間（ GB ） | CPU 總計（核心） | 記憶體（ GB ） | 磁碟空間總計（ GB ） 
+
+
+| 非 HA 小型 | 9 | 18 | 350 | 9 | 18 | 350 
+
+
+| 非 HA 中型 | 13 | 26 | 350 | 13 | 26 | 350 
+
+
+| HA Small | 9 | 18 | 350 | 27 | 54 | 1050 
+
+
+| HA 中型 | 13 | 26 | 350 | 39 | 78 | 1050 
+
+
+| HA 大型 | 17 | 34 | 350 | 51 | 102 | 1050 
+|===
+* 變更完成後開啟虛擬機器電源，並等待服務進入執行中狀態。
+* 如果是 HA 部署，請變更資源，啟用 CPU 和 RAM 的熱插件，並為第二個和第三個節點新增 100 GB 硬碟。無需重新啟動這些節點。
+* 如果應用裝置是以 ONTAP 工具 10.1 或 10.2 部署為本機路徑（簡易部署），則必須在升級前先執行一次「不活動」快照。
+
+
+如果您要從適用於 VMware vSphere 10.0 的 ONTAP 工具升級至 10.1 、則必須先完成下列步驟、才能繼續執行升級工作：
+
+* 啟用診斷 *
+
+. 從 vCenter Server 開啟 ONTAP 工具的主控台。
+. 以維護使用者身分登入。
+. 輸入 *4* 以選擇 * 支援與診斷 * 。
+. 輸入 *2* 以選擇 * 啟用遠端診斷存取 * 。
+. 輸入 *y* 以設定您選擇的密碼。
+. 從終端機 / 終端機登入 VM IP 位址，使用者身分為「 iag 」，以及在前一步驟中設定的密碼。
+
+
+* 備份 MongoDB*
+
+執行下列命令以備份 MongoDB ：
+
+* kN 執行 -it NtV-MongoDB-0sh - kn 是 kubectl -n NtV-system 的別名。
+* 在 Pod 中執行 _env | grep MongoDB_root_password_ 命令。
+* 執行 _exit_ 命令以離開 Pod 。
+* 執行 _kn 執行 NTV-MongoDB-0--mongodump -u root -p MongoDB_root_password --archive=/tmp/mongodb-backup.gz --gzip_ 命令，以取代上述命令設定的 Mongo_root_password 。
+* 執行 _kn CP NTV-MongoDB-0:/tmp/mongodb-backup.gz ./MongoDB-backup.gz_ 命令，將使用上述命令建立的 MongoDB 備份從 Pod 複製到主機。
+
+
+* 拍攝所有 Volume 的 quaise 快照 *
+
+* 執行 'kn Get PVC' 命令並儲存命令輸出。
+* 使用下列其中一種方法、逐一拍攝所有磁碟區的快照：
++
+** 從 CLI 執行命令 _volume snapshot create -vserver <vserver_name> -volume <volume_name> -snapshot <snapshot_name> _
+** 從 ONTAP 系統管理員使用者介面中，依磁碟區名稱在搜尋列中搜尋，然後選取該名稱來開啟該磁碟區。移至快照並新增該磁碟區的快照。
+
+
+
+
+* 在 vCenter 中擷取適用於 VMware vSphere VM 的 ONTAP 工具快照（ HA 部署時為 3 個 VM 、非 HA 部署時為 1 個 VM ） *
+
+* 在 vSphere 用戶端使用者介面中、選取虛擬機器。
+* 移至「 Snapshots 」（快照）標籤，然後選取「 * 拍攝 Snapshot* 」按鈕。拍攝虛擬機器的靜默快照。如 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/take-snapshots-of-a-virtual-machine.html["拍攝虛擬機器的快照"^]需詳細資訊，請參閱。
+
+
+在執行升級之前，請先從記錄套件中刪除已完成的 Pod ，並以「 genere-support-bundle-job 」為首碼。如果正在產生支援套件、請等待其完成、然後刪除 Pod 。
+
+對於任何類型的升級，您都需要新增額外的 100 GB 硬碟（ HDD ）。若要新增 HDD ，請執行下列工作。
+
+. 在單一節點組態中選取虛擬機器，或在 HA 組態中選取全部三個虛擬機器。
+. 在虛擬機器上按一下滑鼠右鍵，然後選取 * 新增裝置 * > * 硬碟 *
+. 在 * 新硬碟 * 欄位中新增 100 GB HDD 。
+. 選取 * 套用 *
+
+
+新增硬碟後，請針對個別組態更新 VM 資源，然後重新啟動主要 VM 。
+
+將會建立新的 HDD 。動態儲存資源配置程式會使用此 HDD 來產生或複寫磁碟區。
+
+.步驟
+. 將適用於 VMware vSphere 的 ONTAP 工具升級 ISO 上傳至內容庫。
+. 在主 VM 頁面中，選擇 * Actions * > * Edit Settings*
+. 在「編輯設定」視窗的「 *CD/DVD 磁碟機 * 」欄位下，選取內容庫 ISO 檔案。
+. 選取 ISO 檔案，然後選取 * 確定 * 。在 *CD/DVD 驅動器 * 字段中選擇 Connected （已連接）複選框。image:../media/primaryvm-edit-settings.png["編輯設定"]
+. 從 vCenter Server 開啟 ONTAP 工具的主控台。
+. 以維護使用者身分登入。
+. 輸入 *3* 選擇系統組態功能表。
+. 輸入 *7* 選擇升級選項。
+. 升級時、系統會自動執行下列動作：
++
+.. 憑證升級
+.. 遠端外掛程式升級
+
+
+
+
+升級至適用於 VMware vSphere 10.3 的 ONTAP 工具之後，您可以：
+
+* 從管理員使用者介面停用服務
+* 從非 HA 設定移至 HA 設定
+* 將非 HA 小型組態擴充為非 HA 媒體或 HA 中型或大型組態。
+* 如果是非 HA 升級，請重新啟動 ONTAP 工具 VM 以反映變更。如果是 HA 升級，請重新啟動第一個節點，以反映節點上的變更。
+
+
+*完成後*
+
+從 VMware vSphere 的舊版工具升級到 10.3 之後，請重新掃描 ONTAP 介面卡，確認詳細資料已在「 VMware Live Site Recovery Storage Replication Adapters 」頁面上更新。
+
+成功升級後，請使用下列程序，手動從 ONTAP 刪除 Trident 磁碟區：
+
+
+NOTE: 如果 VMware vSphere 10.1 或 10.2 的 ONTAP 工具是採用非 HA 小型或中型（本機路徑）組態，則不需要執行這些步驟。
+
+. 從 vCenter Server 開啟 ONTAP 工具的主控台。
+. 以維護使用者身分登入。
+. 輸入 *4* 選擇 * Support and Diagnostics* （ * 支援與診斷 * ）功能表。
+. 輸入 *1* 以選擇 * 存取診斷 Shell * 選項。
+. 執行下列命令
++
+[listing]
+----
+sudo python3 /home/maint/scripts/ontap_cleanup.py
+----
+. 輸入 ONTAP 使用者名稱和密碼
+
+
+這會刪除 ONTAP 工具 for VMware vSphere 10.1/10.2 中 ONTAP 中使用的所有 Trident Volume 。
+
+*相關資訊*
+
+link:../migrate/migrate-to-latest-ontaptools.html["從適用於 VMware vSphere 9.x 的 ONTAP 工具移轉至 10.3"]

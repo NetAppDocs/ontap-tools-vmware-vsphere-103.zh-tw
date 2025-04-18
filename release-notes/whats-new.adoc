@@ -1,0 +1,64 @@
+---
+permalink: release-notes/whats-new.html 
+sidebar: sidebar 
+keywords: 'what"s new, release notes, 10.3, ONTAP tools for VMware vSphere' 
+summary: 瞭解適用於 VMware vSphere 10.3 的 ONTAP 工具所提供的新功能。 
+---
+= 適用於 VMware vSphere 10.3 的 ONTAP 工具的新增功能
+:allow-uri-read: 
+
+
+[role="lead"]
+瞭解適用於 VMware vSphere 10.3 的 ONTAP 工具所提供的新功能。
+
+[cols="30%,70%"]
+|===
+| 更新 | 說明 
+
+
+ a| 
+支援新的平台和應用程式版本
+ a| 
+適用於 VMware vSphere 10.3 的 ONTAP 工具現在支援下列平台和應用程式版本：
+
+* ONTAP 9.16.0 及更新版本
+* VMware vSphere 8.0 U3
+* VMware Live Site Recovery 9.0
+
+
+
+
+ a| 
+易於部署
+ a| 
+您現在可以在單一節點叢集上以最低需求部署適用於 VMware vSphere 10.3 的 ONTAP 工具，然後將其更新為高可用度（ HA ）或多節點部署。
+
+
+
+ a| 
+無縫的資源配置與組態
+ a| 
+適用於 VMware vSphere 10.3 的 ONTAP 工具已移除與 Trident 相關的相依性，現在則使用動態儲存資源配置程式來啟用無縫的資源配置和組態。
+
+
+
+ a| 
+強化 REST API 驗證的安全性
+ a| 
+適用於 VMware vSphere 10.3 的 ONTAP 工具現在仰賴 CA 簽署的 ONTAP 工具 REST API 和使用者介面憑證，以提供更高的安全性。
+
+
+
+ a| 
+支援 ASA R2 系統
+ a| 
+適用於 VMware vSphere 10.3 的 ONTAP 工具支援 ASA R2 系統上的 VMFS 資料存放區資源配置，可透過 SnapMirror Active Sync 和 SRA/VMware Live Site Recovery 來保護 VMFS 資料存放區。
+
+
+
+ a| 
+提升觀察能力
+ a| 
+適用於 VMware vSphere 10.3 的 ONTAP 工具可擴充對 VMFS 和 vVol 資料存放區及其各自 VM 的觀察指標支援。
+
+|===

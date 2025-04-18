@@ -1,0 +1,35 @@
+---
+permalink: manage/edit-esxi-host-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用ONTAP VMware vSphere的支援功能儀表板來編輯ESXi主機設定。 
+---
+= 使用ONTAP VMware ESXi工具修改ESXi主機設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用ONTAP VMware vSphere的支援功能儀表板來編輯ESXi主機設定。
+
+.開始之前
+如果您的 ESXi 主機設定有問題、此問題會顯示在儀表板的 ESXi 主機系統入口小程式中。您可以選取問題來檢視有問題的 ESXi 主機的主機名稱或 IP 位址。
+
+.步驟
+. 登入 vSphere 用戶端
+. 在捷徑頁面中，選取外掛程式區段下方的 * NetApp ONTAP tools* 。
+. 前往 VMware vSphere 外掛程式 ONTAP 工具概觀（儀表板）中的 * ESXi 主機相容性 * 入口小工具。
+. 選取 * 套用建議的設定 * 連結。
+. 在 * 套用建議的主機設定 * 視窗中，選取您要符合 NetApp 建議主機設定的主機，然後選取 * 下一步 * 。
++
+
+NOTE: 您可以展開 ESXi 主機以查看目前的值。
+
+. 在「設定」頁面中、視需要選取建議的值。
+. 在摘要窗格中，檢查值並選擇 * 完成 * 。您可以在最近的工作面板中追蹤進度。
+
+
+*相關資訊*
+
+link:../configure/configure-esx-server-multipath-and-timeout-settings.html["設定 ESXi 主機設定"]

@@ -1,0 +1,25 @@
+---
+permalink: manage/disable-autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: 第一次設定儲存系統時， AutoSupport 預設為啟用。在技術支援啟用 24 小時後，它會傳送訊息給技術支援人員。 
+---
+= 停用 AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+第一次設定儲存系統時， AutoSupport 預設為啟用。在技術支援啟用 24 小時後，它會傳送訊息給技術支援人員。停用 AutoSupport 時，您將不再收到主動式支援和監控。
+
+
+NOTE: 建議您保持啟用 AutoSupport 。有助於加速問題偵測與解決。系統會收集 AutoSupport 資訊，並將其儲存在本機，即使停用也一樣。
+
+.步驟
+. 從 vCenter Server 開啟維護主控台。
+. 以維護使用者身分登入。
+. 輸入 1 以選擇 * 應用程式組態 * 。
+. 輸入 3 以選擇 * 停用 AutoSupport * 。
+. 在確認對話方塊中輸入 y 。
+

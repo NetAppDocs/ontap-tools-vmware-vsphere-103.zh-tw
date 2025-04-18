@@ -1,0 +1,129 @@
+---
+permalink: deploy/deployment-error-codes.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: 本頁概述適用於 VMware vSphere 系統之 ONTAP 工具的部署、重新開機及還原作業錯誤代碼。 
+---
+= 部署錯誤代碼
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能會在部署 VMware vSphere 、重新開機和還原作業的 ONTAP 工具期間遇到錯誤代碼。錯誤代碼長度為五位數、前兩位數代表發生問題的指令碼、後三位數代表該指令碼內的特定工作流程。
+
+所有錯誤記錄都會記錄在 ansible-perl-errors.log 檔案中、以便輕鬆追蹤及解決問題。此記錄檔包含錯誤代碼和失敗的 Ansible 工作。
+
+
+NOTE: 本頁提供的錯誤代碼僅供參考。如果錯誤持續發生、或沒有提及解決方案、請聯絡支援團隊。
+
+下表列出錯誤代碼和對應的檔案名稱。
+
+|===
+
+
+| * 錯誤代碼 * | * 指令碼名稱 * 
+
+
+| 00 | firstboot-network-config.pl 、模式部署 
+
+
+| 01 | firstboot-network-config.pl 、模式升級 
+
+
+| 02 | firstboot-inputs-validation.pl 
+
+
+| 03 | firstboot-deploy-otv-ng.pl ，部署， HA 
+
+
+| 04 | firstboot-deploy-otv-ng.pl ，部署，非 HA 
+
+
+| 05 | firstboot-deploy-otv-ng.pl 、重新開機 
+
+
+| 06 | firstboot-deploy-otv-ng.pl ，升級， HA 
+
+
+| 07 | firstboot-deploy-otv-ng.pl ，升級，非 HA 
+
+
+| 08 | firstboot-otv-recovery.pl 
+
+
+| 09 | post-deploy-upgrade.pl 
+|===
+錯誤代碼的最後三位數字表示指令碼內的特定工作流程錯誤：
+
+|===
+
+
+| * 部署錯誤代碼 * | *工作流程* | * 解決方法 * 
+
+
+| 050 | SSH 金鑰產生失敗 | 重新啟動主要虛擬機器（ VM ）。 
+
+
+| 053 | 安裝 RKE2 失敗 | 執行下列項目並重新啟動主要 VM 、或重新部署： Sudo rke2-killall.sh （所有 VM ） Sudo rke2-uninstall.sh （所有 VM ）。 
+
+
+| 054 | 無法設定 kubeconfig | 重新部署 
+
+
+| 055 | 部署登錄失敗 | 如果存在登錄 Pod 、請等待 Pod 準備就緒、然後重新啟動主要 VM 或重新部署。 
+
+
+| 059 | KubeVip 部署失敗 | 確保在部署期間所提供的 Kubernetes 控制平面和負載平衡器 IP 位址的虛擬 IP 位址屬於同一個 VLAN 、而且是可用的 IP 位址。如果所有先前的點都正確、請重新啟動。否則、請重新部署。 
+
+
+| 060 | 操作員部署失敗 | 重新啟動 
+
+
+| 061 | 服務部署失敗 | 在 NTV 系統命名空間中執行基本 Kubernetes 偵錯、例如 Get Pod 、 Get RS 、 Get Svc 等、以取得詳細資料和錯誤記錄、請參閱 /var/log/ansible-perl-errors.log 和 /var/log/ansible-run.log 、然後重新部署。 
+
+
+| 062 | ONTAP 工具服務部署失敗 | 請參閱 /var/log/ansible-perl-errors.log 上的錯誤記錄、以取得更多詳細資料並重新部署。 
+
+
+| 065 | 無法連線到 Swagger 頁面 URL | 重新部署 
+
+
+| 066 | 閘道憑證的部署後步驟失敗 | 請執行下列步驟以恢復 / 完成升級： * 啟用診斷 Shell 。* 執行 'Udo perl /home/maint/scripts/post-deploy-upgrade.pl --postDeploy ' 命令。* 查看 /var/log/post-deploy-upgrade .log 中的記錄。 
+
+
+| 088 | 設定日誌輪轉為日誌檔失敗 | 檢查 VM 網路設定是否與裝載 VM 的主機相容。您可以嘗試移轉至其他主機，然後重新啟動 VM 。 
+
+
+| 089 | 變更摘要記錄輪轉組態檔的擁有權失敗 | 重新啟動主要 VM 。 
+
+
+| 096 | 安裝動態儲存資源配置程式 | - 
+
+
+| 108 | 植入指令碼失敗 | - 
+|===
+|===
+
+
+| * 重新開機錯誤代碼 * | *工作流程* | * 解決方法 * 
+
+
+| 067 | 等待 rke2 伺服器逾時。 | - 
+
+
+| 101 | 無法重設維護 / 主控台使用者密碼。 | - 
+
+
+| 102 | 在重設維護 / 主控台使用者密碼期間，無法刪除密碼檔案。 | - 
+
+
+| 103 | 無法在資料保險箱中更新新的維護 / 主控台使用者密碼。 | - 
+
+
+| 088 | 設定日誌輪轉為日誌檔失敗。 | 檢查 VM 網路設定是否與裝載 VM 的主機相容。您可以嘗試移轉至其他主機，然後重新啟動 VM 。 
+
+
+| 089 | 變更摘要記錄輪轉組態檔的擁有權失敗。 | 重新啟動 VM 。 
+|===

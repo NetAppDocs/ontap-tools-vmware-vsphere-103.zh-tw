@@ -1,0 +1,37 @@
+---
+indexpage:
+  title: 適用於 VMware vSphere 10.3 的 ONTAP 工具文件
+  lead: VMware vSphere的支援工具可讓您在vCenter Server環境中設定、管理及保護虛擬資料存放區。ONTAP
+  tiles:
+  - title: 開始使用
+    links:
+    - title: 版本資訊
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP3334864
+    - title: 深入瞭ONTAP 解VMware vSphere的各種功能
+      url: "/concepts/ontap-tools-overview.html"
+    - title: 部署適用於 VMware vSphere 的 ONTAP 工具
+      url: "/deploy/ontap-tools-deployment.html"
+    - title: 升級至適用於 VMware vSphere 的最新版 ONTAP 工具
+      url: "/upgrade/upgrade-ontap-tools.html"
+    - title: 移轉適用於 VMware vSphere 的 ONTAP 工具
+      url: migrate/migrate-to-latest-ontaptools.html
+  - title: 使用適用於 VMware vSphere 的 ONTAP 工具
+    links:
+    - title: 設定角色型存取控制
+      url: "/concepts/rbac-learn-about.html"
+    - title: 設定遠端診斷
+      url: "/manage/configure-remote-diagnostic-access.html"
+    - title: 適用於 VMware vSphere 的 ONTAP 工具的高可用度
+      url: "/concepts/high-availability.html"
+    - title: 保護資料存放區
+      url: "/protect/enable-storage-replication-adapter.html"
+  - title: 更多資源
+    links:
+    - title: 適用於 VMware vSphere 9 的舊版 ONTAP 工具文件
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63792
+    - title: NetApp 知識庫：適用於 VMware vSphere 的 ONTAP 工具
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/VSC_and_VASA_Provider
+    - title: NetApp 社群：適用於 VMware vSphere 的 ONTAP 工具
+      url: https://community.netapp.com/t5/VMware-Solutions-Discussions/bd-p/vmware-solutions-discussions
+    - title: 瞭解 VMware vSphere with ONTAP
+      url: https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html#why-ontap-for-vsphere

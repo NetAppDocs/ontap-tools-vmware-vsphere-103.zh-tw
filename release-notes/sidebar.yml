@@ -1,0 +1,10 @@
+---
+section: release-notes
+title: 版本資訊
+entries:
+- title: 版本資訊
+  url: "/release-notes/release-notes.html"
+- title: 適用於 VMware vSphere 10.3 的 ONTAP 工具的新功能
+  url: "/release-notes/whats-new.html"
+- title: ONTAP 工具 9 和 ONTAP 工具 10 的功能比較
+  url: "/release-notes/ontap-tools-9-ontap-tools-10-feature-comparison.html"

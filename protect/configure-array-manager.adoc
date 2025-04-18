@@ -1,0 +1,65 @@
+---
+permalink: protect/configure-array-manager.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用 VMware Live Site Recovery 的 Array Manager 精靈來設定 Storage Replication Adapter （ SRA ）、以啟用 VMware Live Site Recovery 與儲存虛擬機器（ SVMs ）之間的互動。 
+---
+= 使用Array Manager設定SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 VMware Live Site Recovery 的 Array Manager 精靈來設定 Storage Replication Adapter （ SRA ）、以啟用 VMware Live Site Recovery 與儲存虛擬機器（ SVM ）之間的互動。
+
+.開始之前
+* 您應該已在 VMware Live Site Recovery 中配對受保護的站台和還原站台。
+* 您應該先設定已登入的儲存設備、然後再設定陣列管理員。
+* 您應該已設定並複寫受保護站台和恢復站台之間的 SnapMirror 關係。
+* 您應該已啟用 SVM 管理生命來啟用多租戶。
+
+
+SRA支援叢集層級的管理和SVM層級的管理。如果您在叢集層級新增儲存設備、則可以探索叢集中所有 SVM 並執行作業。如果您在SVM層級新增儲存設備、則只能管理該特定SVM。
+
+.步驟
+. 在 VMware Live Site Recovery 中，選擇 *Array Manager* > *Add Array Manager* 。
+. 請輸入下列資訊、以說明 VMware Live Site Recovery 中的陣列：
++
+.. 在「*顯示名稱*」欄位中輸入識別陣列管理程式的名稱。
+.. 在「* SRA類型*」欄位中、選取*《NetApp儲存複寫介面卡for ONTAP Rise*》。
+.. 輸入連線至叢集或SVM的資訊：
++
+*** 如果您要連線至叢集、應輸入叢集管理LIF。
+*** 如果您直接連線至SVM、則應輸入SVM管理LIF的IP位址。
++
+
+NOTE: 在設定陣列管理員時，您應該針對用於 VMware vSphere 的 ONTAP 工具中儲存系統內建的儲存系統，使用相同的連線（ IP 位址）。例如、如果陣列管理員組態是 SVM 範圍、則應在 SVM 層級新增 ONTAP 工具下的 VMware vSphere 儲存設備。
+
+
+
+.. 如果您要連線至叢集、請在* SVM名稱*欄位中輸入SVM的名稱。
++
+您也可以將此欄位留白。
+
+.. 在「* Volume Include list*」（包含磁碟區清單*）欄位中輸入要探索的磁碟區。
++
+您可以在受保護的站台輸入來源磁碟區、並在還原站台輸入複寫的目的地磁碟區。
+
++
+例如、如果您想要探索與 Volume DST_vol1 的 SnapMirror 關係中的 Volume SRM_vol1 、您應該在受保護的站台欄位中指定 src-vol1 、在恢復站台欄位中指定 dst_vol1 。
+
+.. *（選用）*在「* Volume exclude list*（* Volume排除清單*）」欄位中輸入要從探索中排除的磁碟區。
++
+您可以在受保護的站台輸入來源磁碟區、並在還原站台輸入複寫的目的地磁碟區。
+
++
+例如、如果您想要排除與 Volume _DST_vol1_ 的 SnapMirror 關係中的 Volume _src_vol1_ 、您應該在受保護的站台欄位中指定 _src/vol1_ 、在恢復站台欄位中指定 _dst_vol1_ 。
+
+
+
+. 選擇*下一步*。
+. 驗證是否已發現陣列並顯示在 Add Array Manager （添加陣列管理器）窗口的底部，然後選擇 *Finish （完成） * 。
+
+
+您可以使用適當的SVM管理IP位址和認證、對還原站台執行相同的步驟。在Add Array Manager精靈的「Enable Array Pairs（啟用陣列配對）」畫面中、您應確認已選取正確的陣列配對、且該配對顯示為「Ready to be enabled（已準備好啟用）」。

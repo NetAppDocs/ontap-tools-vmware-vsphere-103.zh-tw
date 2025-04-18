@@ -1,0 +1,161 @@
+---
+permalink: upgrade/upgrade-error-codes.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: 本頁概述適用於 VMware vSphere 系統的 ONTAP 工具升級作業的錯誤代碼。 
+---
+= 升級錯誤代碼
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能會在執行 VMware vSphere 升級作業的 ONTAP 工具期間遇到錯誤代碼。錯誤代碼長度為五位數、前兩位數代表發生問題的指令碼、後三位數代表該指令碼內的特定工作流程。
+
+所有錯誤記錄都會記錄在 ansible-perl-errors.log 檔案中、以便輕鬆追蹤及解決問題。此記錄檔包含錯誤代碼和失敗的 Ansible 工作。
+
+
+NOTE: 本頁提供的錯誤代碼僅供參考。如果錯誤持續發生、或沒有提及解決方案、請聯絡支援團隊。
+
+下表列出錯誤代碼和對應的檔案名稱。
+
+|===
+
+
+| * 錯誤代碼 * | * 指令碼名稱 * 
+
+
+| 00 | firstboot-network-config.pl 、模式部署 
+
+
+| 01 | firstboot-network-config.pl 、模式升級 
+
+
+| 02 | firstboot-inputs-validation.pl 
+
+
+| 03 | firstboot-deploy-otv-ng.pl ，部署， HA 
+
+
+| 04 | firstboot-deploy-otv-ng.pl ，部署，非 HA 
+
+
+| 05 | firstboot-deploy-otv-ng.pl 、重新開機 
+
+
+| 06 | firstboot-deploy-otv-ng.pl ，升級， HA 
+
+
+| 07 | firstboot-deploy-otv-ng.pl ，升級，非 HA 
+
+
+| 08 | firstboot-otv-recovery.pl 
+
+
+| 09 | post-deploy-upgrade.pl 
+|===
+錯誤代碼的最後三位數字表示指令碼內的特定工作流程錯誤：
+
+|===
+
+
+| * 升級錯誤代碼 * | *工作流程* | * 解決方法 * 
+
+
+| 068 | Debian 套件復原失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 069 | 還原檔案失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 070 | 刪除備份失敗 | - 
+
+
+| 071 | Kubernetes 叢集不健全 | - 
+
+
+| 074 | 掛載 ISO 失敗 | 請檢查 /var/log/upgrade-run.log ，然後重試升級。 
+
+
+| 075 | 升級預先檢查失敗 | 重試升級。 
+
+
+| 076 | 登錄升級失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 077 | 登錄復原失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 078 | 操作員升級失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 079 | 操作員復原失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 080 | 服務升級失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 081 | 服務復原失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 082 | 從容器刪除舊映像失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 083 | 刪除備份失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 084 | 將 JobManager 變更回正式作業失敗 | 請依照下列步驟恢復 / 完成升級。1.啟用診斷 Shell 2 。執行命令： _Sudo perl /home/maint/scripts/post-deploy-upgrade.pl --postupgrade _ 3 。請至 /var/log/post-deploy-upgrade.log 查看記錄 
+
+
+| 087 | 升級後步驟失敗。 | 請執行下列步驟以恢復 / 完成升級。1.啟用診斷 Shell 2 。執行 _Sudo perl /home/maint/scripts/post-deploy-upgrade.pl --postupgrade 命令 3.請至 /var/log/post-deploy-upgrade.log 查看記錄 
+
+
+| 088 | 設定日誌輪轉為日誌檔失敗 | 檢查 VM 網路設定是否與裝載 VM 的主機相容。您可以嘗試將虛擬機器移轉至其他主機，然後重新啟動。 
+
+
+| 089 | 變更摘要記錄輪轉組態檔的擁有權失敗 | 重試升級。 
+
+
+| 093 | 動態儲存資源配置程式升級失敗 | 重試升級。 
+
+
+| 094 | 動態儲存資源配置程式復原失敗 | 重試升級。 
+
+
+| 095 | 作業系統升級失敗 | 作業系統升級無法恢復。ONTAP 工具服務已升級，新的 Pod 將會執行。 
+
+
+| 096 | 安裝動態儲存資源配置程式 | 檢查升級記錄，然後重試升級。 
+
+
+| 097 | 解除安裝服務以進行升級失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 098 | 將 dockercred 秘密從 NTV 系統複製到動態儲存資源配置程式命名空間失敗 | 檢查升級記錄，然後重試升級。 
+
+
+| 099 | 無法驗證新增的 HDD | 在 HA 的情況下，將新的 HDD 新增至所有節點，在非 HA 部署的情況下新增至一個節點。 
+
+
+| 108 | 植入指令碼失敗 | - 
+
+
+| 109 | 備份持續磁碟區資料失敗 | 檢查升級記錄，然後重試升級。 
+
+
+| 110 | 還原持續性磁碟區資料失敗 | 請使用零 RPO 或快照型還原，然後重試升級。 
+
+
+| 111 | 更新 RKE2 的 etcd 逾時參數失敗 | 檢查升級記錄，然後重試升級。 
+
+
+| 112 | 解除安裝動態儲存資源配置程式失敗 | - 
+
+
+| 113 | 重新整理次要節點上的資源失敗 | 檢查升級記錄，然後重試升級。 
+|===
+
+NOTE: 適用於 VMware vSphere 10.3 的 ONTAP 工具支援零 RPO 。
+
+深入瞭解 https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/How_to_restore_ONTAP_tools_for_VMware_vSphere_if_upgrade_fails_from_version_10.0_to_10.1["如果從 10.0 版升級至 10.1 版失敗、如何還原適用於 VMware vSphere 的 ONTAP 工具"]

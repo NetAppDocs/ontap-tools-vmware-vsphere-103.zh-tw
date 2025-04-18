@@ -1,0 +1,22 @@
+---
+permalink: manage/delete-hostcluster-protection.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: 當您移除主機叢集保護時、資料存放區會變成未受保護。 
+---
+= 移除主機叢集保護
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您移除主機叢集保護時、資料存放區會變成未受保護。
+
+.步驟
+. 若要檢視受保護的主機叢集、請瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * 。
++
+在此頁面中、您可以監控受保護的主機叢集及其保護狀態、 SnapMirror 關係及其對應的 SnapMirror 狀態。
+
+. 在 * 主機叢集保護 * 視窗中，針對叢集選取省略符號功能表，然後選取 * 移除保護 * 。
+

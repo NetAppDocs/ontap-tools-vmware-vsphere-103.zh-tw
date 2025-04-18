@@ -1,0 +1,200 @@
+---
+permalink: deploy/prerequisites.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 在部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該先熟悉部署套件的空間需求、以及一些基本的主機系統需求。 
+---
+= VMware vSphere 部署的 ONTAP 工具先決條件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該先熟悉部署套件的空間需求、以及一些基本的主機系統需求。
+
+您可以搭配 VMware vCenter Server 虛擬應用裝置（ vCSA ）使用適用於 VMware vSphere 的 ONTAP 工具。您應該在支援的 vSphere 用戶端（包括 ESXi 系統）上部署適用於 VMware vSphere 的 ONTAP 工具。
+
+
+
+== 系統需求
+
+* * 每個節點的安裝套件空間需求 *
++
+** 15 GB 適用於精簡配置的安裝
+** 348 GB 、適用於完整佈建的安裝
+
+
+* * 主機系統規模調整需求 * 根據部署規模建議的記憶體，如下表所示：
+
+
+|===
+
+
+| * 部署類型 * | * CPU* | * 記憶體（ GB ） * | * 磁碟空間（ GB ）密集佈建 * 
+
+
+| 非 HA 小型 | 9 | 18 | 350 
+
+
+| 非 HA 媒體 | 13 | 26 | 350 
+
+
+| HA 小型（累積三個節點） | 27 | 54 | 1050 
+
+
+| HA 媒體（累積三個節點） | 39 | 78 | 1050 
+
+
+| HA 大型（累積三個節點） | 51 | 102 | 1050 
+|===
+
+
+== 最低儲存與應用程式需求
+
+|===
+| 儲存設備、主機和應用程式 | 最低版本需求 
+
+
+| ONTAP | 9.14.1 ， 9.15.1 和 9.16.0 。FAS ， ASA A 系列， ASA C 系列， AFF A 系列， AFF C 系列和 ASA R2 。 
+
+
+| ESXi主機 | ESXi 7.0.3 
+
+
+| vCenter 伺服器 | vCenter 7.0U3 
+
+
+| VASA供應商 | 3.0 
+
+
+| ova 應用程式 | 10.3 
+|===
+互通性對照表工具（ IMT ）包含有關支援版本的 ONTAP 、 vCenter Server 、 ESXi 主機和外掛應用程式的最新資訊。
+
+https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["互通性對照表工具"^]
+
+
+
+== 部署 VMware vSphere ONTAP 工具的組態限制
+
+您可以使用下表做為指南、為 VMware vSphere 設定 ONTAP 工具。
+
+|===
+
+
+| *部署* | *類型* | * 虛擬工具數 * | * 主機數 * 
+
+
+| 非 HA | 小（ S ） | 約 12 、 000 | 32 
+
+
+| 非 HA | 中（ M ） | 約 24 萬 | 64 
+
+
+| 高可用度 | 小（ S ） | 約 24 萬 | 64 
+
+
+| 高可用度 | 中（ M ） | 約 50 萬 | 128 
+
+
+| 高可用度 | 大（ L ） | 約 100k | 256 [ 注意 ] 表格中的主機數量顯示來自多個 vCenter 的主機總數。 
+|===
+
+
+== 適用於 VMware vSphere 的工具 - 儲存複寫介面卡（ ONTAP ）
+
+下表顯示使用適用於 VMware vSphere 的 ONTAP 工具、每個 VMware Live Site Recovery 執行個體所支援的數量。
+
+|===
+| * vCenter 部署規模 * | * 小 * | * 中 * 
+
+
+| 使用陣列型複寫設定來保護的虛擬機器總數 | 2000 | 5000 
+
+
+| 陣列型複寫保護群組總數 | 250 | 250 
+
+
+| 每個恢復計畫的保護群組總數 | 50 | 50 
+
+
+| 複寫的資料存放區數量 | 255 | 255 
+
+
+| 虛擬機器數量 | 4000 | 7000 
+|===
+下表顯示 VMware Live Site Recovery 的數量、以及對應的 VMware vSphere 部署規模 ONTAP 工具。
+
+|===
+
+
+| * VMware Live Site Recovery 執行個體數 * | * ONTAP 工具部署規模 * 
+
+
+| 最多 4 個 | 小 
+
+
+| 4 至 8 | 中 
+
+
+| 超過 8 個 | 大 
+|===
+如需詳細資訊、請 https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/overview/site-recovery-manager-system-requirements/operational-limits-of-site-recovery-manager.html["VMware Live Site Recovery 的營運限制"]參閱。
+
+
+
+== 連接埠需求
+
+下表概述 NetApp 使用的網路連接埠及其用途。確保這些連接埠是開放且可存取的，以利在系統內正常運作和通訊。請確定已設定必要的網路組態，以允許這些連接埠上的流量正常運作，使相關服務正常運作。視您的安全性原則而定，您可能需要設定防火牆或其他安全設備，以允許網路中的此流量。
+
+|===
+
+
+| *連接埠* | *說明* 
+
+
+| 22 （ TCP ） | Ansible 在叢集資源配置期間使用此 SSH 連接埠進行通訊。此連接埠是變更維護使用者密碼，狀態訊息等功能所必需的，在 HA 組態的情況下，也需要更新所有三個節點上的值。 
+
+
+| 443 （ TCP ） | 這是 VASA Provider 服務傳入通訊的傳輸連接埠。Vasa Provider 自我簽署憑證和自訂 CA 憑證均裝載於此連接埠。 
+
+
+| 8443 （ TCP ） | 此連接埠可透過 swagger 和 Manager 使用者介面應用程式來裝載 API 文件。 
+
+
+| 2379 （ TCP ） | 這是用戶端要求的預設連接埠，例如取得，放置，刪除或監看 etcd 金鑰值存放區中的金鑰。 
+
+
+| 2380 （ TCP ） | 這是 etcd 叢集的伺服器對伺服器通訊預設連接埠，用於 etcd 用於資料複寫和一致性所依賴的 raft Consensus 演算法。 
+
+
+| 7472 （ TCP+UDP ） | 這是 Prometheus 計量服務連接埠。 
+
+
+| 7946 （ TCP+UDP ） | 此連接埠用於 Docker 的容器網路探索。 
+
+
+| 9083 （ TCP ） | 此連接埠是 VASA Provider 服務的內部使用服務連接埠。 
+
+
+| 1162 （ UDP ） | 這是 SNMP 設陷封包連接埠。 
+
+
+| 6443 （ TCP ） | 來源： RKE2 代理節點。目的地： REK2 伺服器節點。說明： Kubernetes API 
+
+
+| 9345 （ TCP ） | 來源： RKE2 代理節點。目的地： REK2 伺服器節點。說明： REK2 監督 API 
+
+
+| 8472 （ TCP+UDP ） | 當使用 fl2el VXLAN 時，所有節點都必須能夠透過 UDP 連接埠 8472 到達其他節點。來源：所有 RKE2 節點。目的地：所有 REK2 節點。說明：使用 VXLAN 的 Canal CNI 
+
+
+| 10250 （ TCP ） | 來源：所有 RKE2 節點。目的地：所有 REK2 節點。說明： Kubelet 指標 
+
+
+| 30000-32767 （ TCP ） | 來源：所有 RKE2 節點。目的地：所有 REK2 節點。說明： NodePort 連接埠範圍 
+
+
+| 123 （ TCP ） | ntpd 使用此連接埠來執行 NTP 伺服器的驗證。 
+|===

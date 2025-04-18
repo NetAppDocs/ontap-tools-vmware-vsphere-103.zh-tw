@@ -1,0 +1,23 @@
+---
+permalink: manage/mount-a-vvols-datastore.html 
+sidebar: sidebar 
+keywords: Mount vVol 
+summary: 您可以使用「Mount vVols Datastore」（掛載vVols Datastore）對話方塊、將VMware Virtual Volumes（vVols）資料存放區掛載到一或多個其他主機。裝載資料存放區可讓儲存設備存取其他主機。您只能透過 API 卸載 vVols 資料存放區。 
+---
+= 掛載vVols資料存放區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將 VMware 虛擬磁碟區（ vVols ）資料存放區掛載到一或多個額外主機、以提供對其他主機的儲存存取。您只能透過 API 卸載 vVols 資料存放區。
+
+.步驟
+. 從 vSphere Client 首頁、選取 * 主機與叢集 * 。
+. 在導覽窗格中，選取包含資料存放區的資料中心。
+. 在資料存放區上按一下滑鼠右鍵、然後選取 * NetApp ONTAP tools* > * 裝載資料存放區 * 。
+. 在 * 掛載主機上的資料存放區 * 對話方塊中，選取要掛載資料存放區的主機，然後選取 * 掛載 * 。
+
+
+您可以在最近的工作面板中追蹤進度。

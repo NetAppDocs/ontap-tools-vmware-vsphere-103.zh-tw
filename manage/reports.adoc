@@ -1,0 +1,20 @@
+---
+permalink: manage/reports.html 
+sidebar: sidebar 
+keywords:  
+summary: 適用於 VMware vSphere 外掛程式的 ONTAP 工具可提供虛擬機器和資料存放區的報告。 
+---
+= ONTAP 工具報告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+適用於 VMware vSphere 外掛程式的 ONTAP 工具可提供虛擬機器和資料存放區的報告。當您在 vCenter 用戶端的捷徑區段中選取適用於 VMware vSphere 外掛程式的 NetApp ONTAP 工具圖示時、使用者介面會導覽至概觀頁面。選取報告索引標籤以檢視虛擬機器和資料存放區報告。
+
+「虛擬機器」報告會顯示已探索到的虛擬機器清單（至少應有一個磁碟來自 ONTAP 儲存型資料存放區）、其中包含效能指標。展開 VM 記錄時、會顯示所有與磁碟相關的資料存放區資訊。
+
+資料存放區報告會顯示已探索或已辨識的 VMware vSphere 託管資料存放區 ONTAP 工具清單、這些工具是從 ONTAP 儲存後端以效能指標配置的所有類型。
+
+您可以使用「管理欄」選項來隱藏或顯示不同的欄。

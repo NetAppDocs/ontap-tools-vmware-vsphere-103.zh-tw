@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: automation/first-call.html 
+keywords: ontap tools for vmware vsphere rest api reference, first rest api call, acquire access token 
+summary: 您可以使用 Curl 發出 API 呼叫，開始使用適用於 VMware vSphere 10 REST API 的 ONTAP 工具。 
+---
+= 第一次使用 ONTAP 工具進行 VMware vSphere 10 REST API 呼叫
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 Curl 發出 API 呼叫，開始使用適用於 VMware vSphere 10 REST API 的 ONTAP 工具。
+
+
+
+== 開始之前
+
+您應該檢閱 Curl 範例所需的資訊和參數。
+
+.必要資訊
+您需要下列項目：
+
+* 適用於 VMware vSphere 10 IP 位址或 FQDN 的 ONTAP 工具，以及連接埠
+* ONTAP tools Manager 管理員的認證（使用者名稱和密碼）
+
+
+.參數與變數
+以下所示的捲髮範例包括 Bash 樣式變數。您可以在 Bash 環境中設定這些變數，或在發出命令之前手動更新這些變數。如果您設定變數，則 Shell 會在執行每個命令之前，將值取代為這些值。下表說明這些變數。
+
+[cols="25,75"]
+|===
+| 變動 | 說明 
+
+
+| $FQDN_IP_port | ONTAP 工具管理員的完整網域名稱或 IP 位址，以及連接埠編號。 
+
+
+| $MyUser | ONTAP 工具管理員帳戶的使用者名稱。 
+
+
+| $MyPassword | 與 ONTAP 工具管理員使用者名稱相關的密碼。 
+
+
+| $access_token | ONTAP 工具管理員所發出的存取權杖。 
+|===
+Linux CLI 的下列命令和輸出說明如何設定及顯示變數：
+
+[listing]
+----
+FQDN_IP_PORT=172.14.31.224:8443
+echo $FQDN_IP
+172.14.31.224:8443
+----
+
+
+== 步驟 1 ：取得存取權杖
+
+您需要取得存取權杖才能使用 REST API 。以下是如何申請存取權杖的範例。您應該以適當的環境值來取代。
+
+[source, curl]
+----
+curl --request POST \
+--location "https://$FQDN_IP_PORT/virtualization/api/v1/auth/login” \
+--header "Content-Type: application/json" \
+--header "Accept: */*" \
+-d "{"username": "$MYUSER", "password": "$MYPASSWORD"}"
+----
+複製並儲存回應中提供的存取權杖。
+
+
+
+== 步驟 2 ：發出 REST API 呼叫
+
+擁有存取權杖之後，您可以使用 Curl 來發出 REST API 呼叫。包括在第一步中取得的存取權杖。
+
+.Curl範例
+[source, curl]
+----
+curl --request GET \
+--location "https://$FQDN_IP_PORT/virtualization/api/v1/vcenters" \
+--header "Accept: */*" \
+--header "x-auth: $ACCESS_TOKEN"
+----
+JSON 回應包含設定為 ONTAP 工具管理員的 VMware vCenter 執行個體清單。

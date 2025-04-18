@@ -1,0 +1,18 @@
+---
+permalink: concepts/autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: 此機制可主動監控系統健全狀況、並自動傳送訊息給NetApp技術支援、您的內部支援組織及支援合作夥伴。AutoSupport 
+---
+= AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此機制可主動監控系統健全狀況、並自動傳送訊息給NetApp技術支援、您的內部支援組織及支援合作夥伴。AutoSupport
+
+當您第一次設定儲存系統時、預設會啟用此功能。AutoSupport啟用此功能24小時後、系統會開始傳送訊息給技術支援人員。AutoSupport AutoSupport
+
+您可以使用維護主控台選項 * 應用程式組態 * > * 停用 AutoSupport * 來停用 AutoSupport 。建議您保持啟用狀態。啟用 AutoSupport 有助於加速問題偵測、並協助更快解決問題。系統會收集 AutoSupport 資訊、並將其儲存在本機、即使 AutoSupport 已停用。不過、它不會將報告傳送至任何網路。您需要使用第一個 VM 的維護主控台來提供 Proxy URL 。使用選項 * 應用程式組態 * > * 更新 AutoSupport Proxy URL* 來輸入 Proxy URL 。

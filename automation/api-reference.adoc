@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: automation/api-reference.html 
+keywords: ontap tools for vmware vsphere rest api reference, api reference 
+summary: VMware vSphere 10 REST API 參考的 ONTAP 工具包含所有 API 呼叫的詳細資料。此參考資料在開發自動化應用程式時非常實用。 
+---
+= 適用於 VMware vSphere 10 REST API 之 ONTAP 工具的 API 參考
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMware vSphere 10 REST API 參考的 ONTAP 工具包含所有 API 呼叫的詳細資料。此參考資料在開發自動化應用程式時非常實用。
+
+您可以透過 Swagger 使用者介面，線上存取適用於 VMware vSphere 10 REST API 的 ONTAP 工具文件。您需要適用於 VMware vSphere 10 閘道服務和連接埠的 ONTAP 工具 IP 位址或 FQDN 。
+
+.步驟
+. 在瀏覽器中輸入下列 URL ，以適當的 IP 位址和連接埠組合來取代變數，然後按下 *Enter* 。
++
+`\https://$FQDN_IP_PORT/`
+
++
+* 範例 *
+
++
+`\https://10.61.25.33:8443/`
+
+. 以個別 API 呼叫為例，向下捲動至「 *vCenters 」類別，然後選取端點旁的「 Get * 」 `/virtualization/api/v1/vcenters`
+

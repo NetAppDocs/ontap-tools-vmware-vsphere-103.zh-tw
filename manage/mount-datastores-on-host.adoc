@@ -1,0 +1,34 @@
+---
+permalink: manage/mount-datastores-on-host.html 
+sidebar: sidebar 
+keywords:  
+summary: 安裝資料存放區可讓儲存設備存取其他主機。將主機新增至VMware環境之後、即可將資料存放區掛載到其他主機上。 
+---
+= 掛載 NFS 和 VMFS 資料存放區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+安裝資料存放區可讓儲存設備存取其他主機。將主機新增至VMware環境之後、即可將資料存放區掛載到其他主機上。
+
+.關於這項工作
+* 視 vSphere 用戶端版本和選取的資料存放區類型而定，某些按滑鼠右鍵動作會停用或無法使用。
++
+** 如果您使用的是 vSphere Client 8.0 或更新版本、則會隱藏一些按滑鼠右鍵選項。
+** 從 vSphere 7.0U3 到 vSphere 8.0 版本，即使出現選項，動作仍會停用。
+
+
+* 當主機叢集受到統一組態的保護時，裝載資料存放區選項會停用。
+
+
+.步驟
+. 從 vSphere Client 首頁、選取 * 主機與叢集 * 。
+. 在左側導覽窗格中，選取包含主機的資料中心。
+. 若要在主機或主機叢集上掛載 NFS/VMFS 資料存放區，請按一下滑鼠右鍵，然後選取 * NetApp ONTAP tools* > * Mount Datastores* 。
+. 選取您要掛載的資料存放區，然後選取 * 掛載 * 。
+
+
+.接下來呢？
+您可以在最近的工作面板中追蹤進度。

@@ -1,0 +1,26 @@
+---
+permalink: manage/virtual-machine-storage-view-datastore.html 
+sidebar: sidebar 
+keywords: Remove vVol datastore 
+summary: 儲存檢視會顯示虛擬機器所建立的 vVols 清單。 
+---
+= 虛擬機器儲存檢視
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+儲存檢視會顯示虛擬機器所建立的 vVols 清單。
+
+
+NOTE: 此檢視適用於虛擬機器、虛擬機器上至少安裝了一種 ONTAP 工具、可用於 VMware vSphere 託管的 VVols 資料存放區相關磁碟。
+
+.步驟
+. 從 vSphere Client 導覽至虛擬機器。
+. 選取右窗格中的 * 監控 * 標籤。
+. 選擇 * NetApp ONTAP tools* > * Storage* 。「儲存 * 」詳細資料會顯示在右窗格中。您可以看到 VM 上存在的 vVols 清單。
++
+您可以使用「管理欄」選項來隱藏或顯示不同的欄。
+
+

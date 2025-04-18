@@ -1,0 +1,57 @@
+---
+permalink: configure/install-nfs-vaai-plug-in.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用適用於 VMware vSphere 的 ONTAP 工具、安裝適用於 VMware vStorage API for Array Integration （ VAAI\ ）的 NetApp NFS 外掛程式。 
+---
+= 安裝NFS VAAI外掛程式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NFS vStorage API for Array Integration （ NFS VAAI ）外掛程式是整合 VMware vSphere 和 NFS 儲存陣列的軟體元件。使用適用於 VMware vSphere 的 ONTAP 工具安裝 NFS VAAI 外掛程式，以運用 NFS 儲存陣列的進階功能，將某些與儲存相關的作業從 ESXi 主機卸載到儲存陣列本身。
+
+.開始之前
+* 下載 https://mysupport.netapp.com/site/products/all/details/nfsplugin-vmware-vaai/downloads-tab["適用於VMware VAAI的NetApp NFS外掛程式"]安裝套件。
+* 請確定您擁有 ESXi 主機 7.0U3 最新修補程式或更新版本，以及 ONTAP 9.14.1 或更新版本。
+* 掛載 NFS 資料存放區。
+* 將 DataMover ． HardwareAcceleratedMove ， DataMover ． HardwareAcceleratedInit 和 VMFS3 ． HardwareAcceleratedLocking 主機設置的值設置爲“ 1 ”。若要自動設定這些值，請套用 EXSI 主機的建議設定。請參閱 link:../configure/configure-esx-server-multipath-and-timeout-settings.html["設定 ESXi 伺服器多重路徑和逾時設定"]。
+* 使用 vserver NFS modify -vserver vserver_name -vStorage enabled 命令，在儲存虛擬機器（ SVM ）上啟用 vStorage 選項。
+* 請確定您擁有 vSphere 7.0U3 最新的修補程式版本。
+* NetApp NFS VAAI 外掛程式 2.0.1 （組建 16 ）支援 vSphere 8.x 。
+
+
+.步驟
+. 登入 vSphere 用戶端
+. 在外掛程式區段下，選取 * 快速鍵 * > * NetApp ONTAP tools* 。
+. 選取 * 設定 * > * NFS VAAI 工具 * 。
+. 當 VAAI 外掛程式上傳至 vCenter Server 時、請在 * 現有版本 * 區段中選取 * 變更 * 。如果 VAAI 外掛程式未上傳至 vCenter Server 、請選取 * 上傳 * 按鈕。
+. 瀏覽並選取 `.vib`檔案，然後選取 * 上傳 * 將檔案上傳至 ONTAP 工具。
+. 選取 * 安裝在 ESXi 主機 * ，選取要安裝 NFS VAAI 外掛程式的 ESXi 主機，然後選取 * 安裝 * 。
++
+只會顯示符合外掛程式安裝資格的 ESXi 主機。您可以在 vSphere Web Client 的「近期工作」區段中監控安裝進度。
+
+. 安裝完成後，您應該手動重新啟動 ESXi 主機。
++
+當 VMware 管理員重新啟動 ESXi 主機時，適用於 VMware vSphere 的 ONTAP 工具會自動偵測並啟用 NFS VAAI 外掛程式。
+
+
+
+.接下來呢？
+安裝 NFS VAAI 外掛程式並重新啟動 ESXi 主機之後，您必須針對 VAAI 複本卸載設定正確的 NFS 匯出原則。在 NFS 環境中設定 VAAI 時，請將匯出原則規則的下列需求設定為：
+
+* 相關的 ONTAP Volume 需要允許 NFSv4 呼叫。
+* 根使用者應保持 root 身分、所有交會父磁碟區均應允許 NFSv4 。
+* 需要在相關的 NFS 伺服器上設定 VAAI 支援選項。
+
+
+如需程序的詳細資訊、請參閱 https://kb.netapp.com/on-prem/ontap/DM/VAAI/VAAI-KBs/Configure_the_correct_NFS_export_policies_for_VAAI_copy_offload["為 VAAI 複本卸載設定正確的 NFS 匯出原則"]知識庫文章。
+
+.相關資訊
+https://docs.netapp.com/us-en/ontap/nfs-admin/support-vmware-vstorage-over-nfs-concept.html["支援VMware vStorage over NFS"]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/enable-disable-nfsv40-task.html["啟用或停用 NFSv4.0"]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/ontap-support-nfsv42-concept.html#nfs-v4-2-security-labels["ONTAP 支援 NFSv4.2"]

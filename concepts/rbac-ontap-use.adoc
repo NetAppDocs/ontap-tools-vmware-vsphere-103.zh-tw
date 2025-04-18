@@ -1,0 +1,92 @@
+---
+permalink: concepts/rbac-ontap-use.html 
+sidebar: sidebar 
+keywords: ontap rbac, use ontap rbac 
+summary: 使用 ONTAP 實作 VMware vSphere 10 RBAC 的 ONTAP 工具有幾個層面，在正式作業環境中使用之前，您應該先考慮這些工具。 
+---
+= 使用 ONTAP RBAC 搭配適用於 VMware vSphere 10 的 ONTAP 工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用 ONTAP 實作 VMware vSphere 10 RBAC 的 ONTAP 工具有幾個層面，在正式作業環境中使用之前，您應該先考慮這些工具。
+
+
+
+== 組態程序總覽
+
+適用於 VMware vSphere 10 的 ONTAP 工具支援建立具有自訂角色的 ONTAP 使用者。這些定義會封裝在 JSON 檔案中，您可以將其上傳至 ONTAP 叢集。您可以建立使用者，並根據您的環境和安全需求量身打造角色。
+
+主要組態步驟如下所述。如link:../configure/configure-user-role-and-privileges.html["設定 ONTAP 使用者角色和權限"]需詳細資訊、請參閱。
+
+.1.準備
+您必須同時擁有 ONTAP 工具管理員和 ONTAP 叢集的管理認證。
+
+.2.下載 JSON 定義檔案
+登入 ONTAP Tools Manager 使用者介面之後，您可以下載包含 RBAC 定義的 JSON 檔案。
+
+.3.建立具有角色的 ONTAP 使用者
+登入 System Manager 之後，您可以建立使用者和角色：
+
+. 選擇左側的 * 叢集 * ，然後選擇 * 設定 * 。
+. 向下捲動至 * 使用者與角色 * ，然後按一下 `-->`。
+. 在 * 使用者 * 下選取 * 新增 * ，然後選取 * 虛擬化產品 * 。
+. 選取本機工作站上的 JSON 檔案並上傳。
+
+
+.4.設定角色
+在定義角色時，您必須做出數項管理決策。如需詳細資訊、請參閱<<使用 System Manager 設定角色>>。
+
+
+
+== 使用 System Manager 設定角色
+
+開始使用 System Manager 建立新的使用者和角色，並上傳 JSON 檔案之後，即可根據您的環境和需求自訂角色。
+
+
+
+=== 核心使用者和角色組態
+
+RBAC 定義會封裝為多種產品功能，包括 VSC ， VASA Provider 和 SRA 的組合。您應該選擇需要 RBAC 支援的環境。例如，如果您想要角色支援遠端外掛程式功能，請選取 VSC 。您也需要選擇使用者名稱和相關密碼。
+
+
+
+=== 權限
+
+角色 Privileges 會根據 ONTAP 儲存設備所需的存取層級，以四組形式排列。角色所依據的 Privileges 包括：
+
+* 探索
++
+此角色可讓您新增儲存系統。
+
+* 建立儲存設備
++
+此角色可讓您建立儲存設備。它也包含與探索角色相關的所有 Privileges 。
+
+* 修改儲存設備
++
+此角色可讓您修改儲存設備。它也包含與探索相關的所有 Privileges ，並建立儲存角色。
+
+* 銷毀儲存設備
++
+此角色可讓您銷毀儲存設備。它也包含與探索，建立儲存和修改儲存角色相關的所有 Privileges 。
+
+
+
+
+
+=== 產生具有角色的使用者
+
+選取環境的組態選項之後，請按一下 * 新增 * ， ONTAP 便會建立使用者和角色。產生的角色名稱是下列值的串連：
+
+* 在 JSON 檔案中定義的固定首碼值（例如「 OTV_10 」）
+* 您選擇的產品功能
+* 權限集清單。
+
+
+.範例
+`OTV_10_VSC_Discovery_Create`
+
+新使用者將新增至「使用者和角色」頁面上的清單。請注意， HTTP 和 ONTAPI 使用者登入方法都受到支援。

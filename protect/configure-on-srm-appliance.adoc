@@ -1,0 +1,43 @@
+---
+permalink: protect/configure-on-srm-appliance.html 
+sidebar: sidebar 
+keywords:  
+summary: 部署 VMware Live Site Recovery 應用裝置之後，您應該在 VMware Live Site Recovery 應用裝置上設定 SRA 。成功設定的 SRA 可讓 VMware Live Site Recovery 應用裝置與 SRA 通訊、以進行災難恢復管理。您應該將 VMware vSphere 認證的工具（ IP 位址和管理員密碼）儲存在 VMware Live Site Recovery 應用裝置中、以便在 VMware Live Site Recovery 應用裝置和 ONTAP 之間進行通訊。 
+---
+= 在 VMware Live Site Recovery 應用裝置上設定 SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+部署 VMware Live Site Recovery 應用裝置之後，您應該在 VMware Live Site Recovery 應用裝置上設定 SRA 。成功設定的 SRA 可讓 VMware Live Site Recovery 應用裝置與 SRA 通訊、以進行災難恢復管理。您應該將適用於 VMware vSphere 認證的工具（ IP 位址）儲存在 VMware Live Site Recovery 應用裝置中、以便在 VMware Live Site Recovery 應用裝置和 ONTAP 之間進行通訊。
+
+.開始之前
+您應該已經從下載了 _tar.gz_ 檔案 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支援網站"]。
+
+*關於此工作*
+
+VMware Live Site Recovery 應用裝置上的 SRA 組態會將 SRA 認證儲存在 VMware Live Site Recovery 應用裝置中。
+
+.步驟
+. 在 VMware Live Site Recovery 應用裝置畫面上，選取 * 儲存複寫介面卡 * > * 新介面卡 * 。
+. 將 .tar.gz_ 檔案上傳至 VMware Live Site Recovery 。
+. 使用系統管理員帳戶、使用 putty 登入 VMware Live Site Recovery 應用程式。
+. 使用命令切換至 root 使用者： `su root`
+. 執行命令 `cd /var/log/vmware/srm` 以瀏覽至記錄目錄。
+. 在記錄位置輸入命令、以取得 SRA 使用的泊塢視窗 ID ： `docker ps -l`
+. 若要登入容器 ID 、請輸入命令： `docker exec -it -u srm <container id> sh`
+. 使用 ONTAP 工具來設定 VMware Live Site Recovery 以取得 VMware vSphere IP 位址和密碼、命令如下： `perl command.pl -I --otv-ip <OTV_IP>:8443 --otv-username <Application username> --otv-password <Application password> --vcenter-guid <VCENTER_GUID>'`
++
+
+NOTE: 您需要在單引號內提供密碼值、以確保 Perl 指令碼不會將密碼中的特殊字元讀取為輸入的分隔符號。
+
++
+
+NOTE: 應用程式使用者名稱和密碼是在 ONTAP 工具部署期間設定的。這是 VASA Provider/SRA 登錄所需的項目。
+
+. 重新掃描介面卡、確認「 VMware Live Site Recovery Storage Replication Adapters （ VMware Live Site Recovery 儲存複寫介面卡）」頁面上的詳細資料已更新。
+
+
+此時會顯示一則成功訊息、確認儲存認證資料已儲存。SRA可以使用提供的IP位址、連接埠和認證、與SRA伺服器通訊。

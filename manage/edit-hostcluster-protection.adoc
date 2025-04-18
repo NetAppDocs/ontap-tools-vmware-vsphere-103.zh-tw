@@ -1,0 +1,127 @@
+---
+permalink: manage/edit-hostcluster-protection.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: 您可以編輯受保護主機叢集的 SnapMirror 關係。您可以新增、修改及刪除關聯。不過、您無法編輯一致性群組名稱。 
+---
+= 修改受保護的主機叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以執行下列工作、做為修改保護的一部分。您可以在同一個工作流程中執行所有變更。
+
+* 將新的資料存放區或主機新增至受保護的叢集。
+* 將新的 SnapMirror 關聯新增至保護設定。
+* 從保護設定中刪除現有的 SnapMirror 關聯。
+* 修改現有的 SnapMirror 關係。
+
+
+
+
+== 監控主機叢集保護
+
+請使用此程序來監控主機叢集保護的狀態。您可以監控每個受保護的主機叢集、以及其保護狀態、 SnapMirror 關係、資料存放區和對應的 SnapMirror 狀態。
+
+.步驟
+. 登入 vSphere 用戶端
+. 瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * 。
++
+保護欄下方的圖示會顯示保護狀態
+
+. 將游標移至圖示上方、即可查看更多詳細資料。
+
+
+
+
+== 新增資料存放區或主機
+
+使用此程序來保護新增的資料存放區或主機。您可以使用 vCenter 原生使用者介面、將新主機新增至受保護的叢集、或在主機叢集上建立新的資料存放區。
+
+.步驟
+. 登入 vSphere 用戶端
+. 若要編輯受保護叢集的內容、您也可以
++
+.. 瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * ，在叢集上選取省略符號功能表，然後選取 * Edit* 或
+.. 在主機叢集上按一下滑鼠右鍵、然後選取 * NetApp ONTAP tools* > * Protect Cluster* 。
+
+
+. 如果您已在 vCenter 原生使用者介面中建立資料存放區、則該資料存放區會顯示為未受保護。使用者介面會在對話方塊中顯示叢集中的所有資料存放區及其保護狀態。選取 * 保護 * 按鈕以啟用完整保護。
+. 如果您已新增 ESXi 主機、保護狀態會顯示為「部分受保護」。選取 SnapMirror 設定下的省略符號功能表，然後選取 * 編輯 * 來設定新增 ESXi 主機的鄰近度。
++
+
+NOTE: 如果是非同步類型關係、則不支援編輯動作、因為您無法將第三站台的目標 SVM 新增至相同的 ONTAP 工具執行個體。不過、您可以使用目標 SVM 的系統管理員或 CLI 來變更關係組態。
+
+. 進行必要變更後，請選取 * 儲存 * 。
+. 您可以在 * 保護叢集 * 視窗中看到變更。
+
+
+vCenter 工作隨即建立、您可以在 * 最近的工作 * 面板中追蹤進度。
+
+
+
+== 新增 SnapMirror 關係
+
+.步驟
+. 登入 vSphere 用戶端
+. 若要編輯受保護叢集的內容、您也可以
++
+.. 瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * ，在叢集上選取省略符號功能表，然後選取 * Edit* 或
+.. 在主機叢集上按一下滑鼠右鍵、然後選取 * NetApp ONTAP tools* > * Protect Cluster* 。
+
+
+. 選取 * 新增關係 * 。
+. 將新關係新增為 * 非同步 * 或 * 自動化的 FailOverDuplex* 原則類型。
+. 選取 * 保護 * 。
++
+您可以在 * 保護叢集 * 視窗中看到變更。
+
+
+
+vCenter 工作隨即建立、您可以在 * 最近的工作 * 面板中追蹤進度。
+
+
+
+== 刪除現有的 SnapMirror 關係
+
+若要刪除非同步 SnapMirror 關係、次要站台 SVM 或叢集應新增為 VMware vSphere ONTAP 工具上的儲存後端。您無法刪除所有 SnapMirror 關聯。刪除關聯時、也會移除 ONTAP 叢集上的個別關係。當您刪除 AutomatedFailOverDuplex SnapMirror 關係時、目的地上的資料存放區會取消對應、而一致性群組、 LUN 、磁碟區和 igroup 會從目的地 ONTAP 叢集移除。
+
+刪除關係會在次要站台上觸發重新掃描、以將未對應的 LUN 從主機移除為作用中路徑。
+
+.步驟
+. 登入 vSphere 用戶端
+. 若要編輯受保護叢集的內容、您也可以
++
+.. 瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * ，在叢集上選取省略符號功能表，然後選取 * Edit* 或
+.. 在主機叢集上按一下滑鼠右鍵、然後選取 * NetApp ONTAP tools* > * Protect Cluster* 。
+
+
+. 選取 SnapMirror 設定下的省略符號功能表，然後選取 * 刪除 * 。
+
+
+vCenter 工作隨即建立、您可以在 * 最近的工作 * 面板中追蹤進度。
+
+
+
+== 修改現有的 SnapMirror 關係
+
+若要修改非同步 SnapMirror 關係、次要站台 SVM 或叢集應新增為 VMware vSphere ONTAP 工具上的儲存後端。如果這是自動的 FailOverDuplex SnapMirror 關係、您可以修改主機鄰近度、以防組態不一致時使用統一的組態和主機存取。您無法交換非同步和自動的 FailOverDuplex 原則類型。您可以設定叢集上新探索到的主機的鄰近範圍或存取權。
+
+
+NOTE: 您無法編輯現有的非同步 SnapMirror 關係。
+
+.步驟
+. 登入 vSphere 用戶端
+. 若要編輯受保護叢集的內容、您也可以
++
+.. 瀏覽至 * NetApp ONTAP tools* > * Protection * > * 主機叢集關係 * ，在叢集上選取省略符號功能表，然後選取 * Edit* 或
+.. 在主機叢集上按一下滑鼠右鍵、然後選取 * NetApp ONTAP tools* > * Protect Cluster* 。
+
+
+. 如果選取了 AutomatedFailOverDuplex 原則類型、請新增主機鄰近或主機存取詳細資料。
+. 選擇 * 保護 * 按鈕。
+
+
+vCenter 工作隨即建立、您可以在 * 最近的工作 * 面板中追蹤進度。

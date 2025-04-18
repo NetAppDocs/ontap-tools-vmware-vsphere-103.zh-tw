@@ -1,0 +1,60 @@
+---
+permalink: manage/edit-appliance-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用 ONTAP 工具管理員變更管理員密碼。 
+---
+= 變更適用於 VMware vSphere 組態的 ONTAP 工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用 ONTAP tooles Manager 可擴充 VMware vSphere 組態的 ONTAP 工具，以增加部署中的節點數量，或將組態變更為高可用度（ HA ）設定。VMware vSphere 應用程式的 ONTAP 工具最初部署在單一節點非 HA 組態中。
+
+*開始之前*
+
+* 請確定您的 OVA 範本與節點 1 的 OVA 版本相同。節點 1 是最初部署 VMware vSphere OVA 之 ONTAP 工具的預設節點。
+* 確認已啟用 CPU 熱新增和記憶體熱插拔。
+
+
+.步驟
+. 從網路瀏覽器啟動 ONTAP 工具管理員： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期間提供的 VMware vSphere 管理員認證 ONTAP 工具登入。
+. 在概述區段中選取 * 編輯應用裝置設定 * 。
+. 在 * 組態 * 區段中，您可以根據需求向上擴充以增加節點大小，並啟用 HA 組態。您需要 vCenter Server 認證才能進行任何變更。
++
+當 ONTAP 工具處於 HA 組態時，您可以變更內容庫詳細資料。您應該再次提供新編輯提交的密碼。
+
++
+
+NOTE: 在 VMware vSphere 的 ONTAP 工具中，您只能增加節點大小，而無法減少節點大小。在非 HA 設定中，僅支援中型組態。在 HA 設定中，支援中大型組態。
+
+. 使用 HA 切換按鈕來啟用 HA 組態。在 * HA settings* 頁面上，確定：
++
+** 內容庫屬於執行 ONTAP 工具節點 VM 的同一個 vCenter Server 。 vCenter Server 認證可用於驗證及下載 OVA 範本，以進行應用裝置變更。
+** 主控 ONTAP 工具的虛擬機器不會直接部署在 ESXi 主機上。VM 應部署在叢集或資源集區上。
++
+
+NOTE: 啟用 HA 組態後，您就無法還原為非 HA 單一節點組態。
+
+
+
+. 在 * 編輯設備設定 * 視窗的 * HA 設定 * 區段中，您可以輸入節點 2 和 3 的詳細資料。適用於 VMware vSphere 的 ONTAP 工具可在 HA 設定中支援三個節點。
++
+
+NOTE: 大部分的輸入選項都預先填入節點 1 網路詳細資料，以方便工作流程。不過，您可以先編輯輸入資料，再瀏覽精靈的最終頁面。只有在第一個節點上啟用 IPv6 位址時，才能輸入其他兩個節點的 IPv6 位址詳細資料。
+
++
+確保 ESXi 主機只包含一個 ONTAP 工具 VM 。每次移至下一個視窗時，都會驗證輸入。
+
+. 檢閱 * 摘要 * 區段中的詳細資料，並 * 儲存 * 變更。
+
+
+.接下來呢？
+「 * 總覽 * 」頁面會顯示部署的狀態。您也可以使用工作 ID ，從工作檢視中追蹤編輯設備設定工作狀態。
+
+如果 HA 部署失敗，且新節點的狀態顯示為「 New 」（新增），則在重新嘗試啟用 HA 作業之前，請先刪除 vCenter 中的新 VM 。
+
+左側面板上的 * 警示 * 索引標籤列出適用於 VMware vSphere 的 ONTAP 工具警示。

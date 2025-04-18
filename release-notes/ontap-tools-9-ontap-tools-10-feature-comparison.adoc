@@ -1,0 +1,43 @@
+---
+permalink: release-notes/ontap-tools-9-ontap-tools-10-feature-comparison.html 
+sidebar: sidebar 
+keywords: release notes, feature, comparison 
+summary: 瞭解適用於 VMware vSphere 9 的 ONTAP 工具和適用於 VMware vSphere 10 的 ONTAP 工具功能比較 
+---
+= 適用於 VMware vSphere 9 的 ONTAP 工具和適用於 VMware vSphere 10 的 ONTAP 工具功能比較
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+瞭解從適用於 VMware vSphere 9 的 ONTAP 工具移轉至適用於 VMware vSphere 10.1 或更新版本的 ONTAP 工具是否適合您。如需最新的相容性資訊，請參閱 https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]。
+
+[cols="20%,25%,25%,30%"]
+|===
+| 功能 | ONTAP 工具 9.13 | ONTAP 工具 10.1 | ONTAP 工具 10.2 以上版本 
+
+
+| 關鍵價值主張 | 透過增強的安全性、法規遵循與自動化功能、簡化日常 0 到第 2 天的作業 | 不斷演進的 ONTAP 工具從 10.x 邁向 9.x 同位元檢查、同時延伸高可用度、效能和擴充限制 | 擴大支援範圍、僅適用於 VMFS 和 vVols 的 FC 、以及僅適用於 VMFS 的 NVMe / 光纖通道、 NVMe / TCP 。易於使用的 NetApp SnapMirror ，輕鬆設定 vSphere 城域儲存叢集，以及三站台 VMware Live Site Recovery 支援 
+
+
+| ONTAP 發行資格 | ONTAP 9 ． 9.1 至 ONTAP 9 ． 15.1 | ONTAP 9 。 12.1 至 ONTAP 9 。 14.1 | 適用於 ONTAP 工具 10.2 的 ONTAP 9.12.1 至 ONTAP 9.15.1 ，適用於 ONTAP 工具 10.3 的 ONTAP 9.14.1 ， 9.15.1 及 9.16.0 。 
+
+
+| VMware 版本支援 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.5 升級到 VMware Live Site Recovery 9.0 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.7 升級到 VMware Live Site Recovery 9.0 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.7 升級到 VMware Live Site Recovery 9.0 
+
+
+| 傳輸協定支援 | NFS 和 VMFS 資料存放區： NFS （ v3 和 v4.1 ）、 VMFS （ iSCSI 和 FCP ） vVols 資料存放區： iSCSI 、 FCP 、 NVMe / FC 、 NFS v3 | NFS 和 VMFS 資料存放區： NFS （ v3 和 v4.1 ）、 VMFS （ iSCSI ） vVols 資料存放區： iSCSI 、 NFS v3 | NFS 和 VMFS 資料存放區： NFS （ v3 和 v4.1 ）、 VMFS （ iscsi / FCP / NVMe of ） vVols 資料存放區： iSCSI 、 FCP 、 NFS v3 
+
+
+| 擴充性 | 主機與 VM ： 300 台主機、最多 10K VM 資料存放區： 600 NFS 、最多 50 個 VMFS 、最多 250 個 vVols vVols ：最多 14 、 000 個 | 主機與 VM ： 600 部主機 vVols ：最多 140,000 部 | 主機與 VM ： 600 部主機 vVols ：最多 140,000 部 
+
+
+| 觀察能力 | 效能、容量和主機法規遵循儀表板動態 VM 和資料存放區報告 | 更新的效能、容量和主機法規遵循儀表板動態 VM 和資料存放區報告 | 更新的效能、容量和主機法規遵循儀表板動態 VM 和資料存放區報告 
+
+
+| 資料保護 | 適用於 VMFS 和 NFS FlexVols 型複寫的 SRA 複寫、適用於 vVols 選擇控制閥整合、可互通備份 | 適用於 iSCSI VMFS 和 NFS v3 資料存放區的 SRA 複寫 | 適用於 iSCSI VMFS 和 NFS v3 資料存放區的 SRA 複寫結合 SMAS 和 VMware Live Site Recovery 的三站台保護。 
+
+
+| Vasa Provider 支援 | VASA 4.0 | VASA 3.0 | VASA 3.0 
+|===

@@ -1,0 +1,35 @@
+---
+permalink: manage/storage-view-datastore.html 
+sidebar: sidebar 
+keywords: Remove vVol datastore 
+summary: 適用於 VMware vSphere 的 ONTAP 工具的「組態」索引標籤下的 ONTAP 儲存檢視、可提供與資料存放區及其磁碟區相關的資料。 
+---
+= 資料存放區的 ONTAP 儲存檢視
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+適用於 VMware vSphere 的 ONTAP 工具會在「組態」索引標籤中顯示資料存放區及其磁碟區的 ONTAP 儲存側視圖。
+
+.步驟
+. 從 vSphere 用戶端瀏覽至資料存放區。
+. 選擇右窗格中的 * 組態 * 標籤。
+. 選擇 * NetApp ONTAP tools* > * ONTAP Storage* 。視資料存放區類型而定，檢視會變更。如需詳細資訊，請參閱下表：
+
+
+|===
+
+
+| * 資料存放區類型 * | * 可用資訊 * 
+
+
+| NFS 資料存放區 | 「 * 儲存詳細資料 * 」頁面包含儲存後端，集合和磁碟區資訊。NFS 詳細資料頁面包含與 NFS 資料存放區相關的資料。 
+
+
+| VMFS 資料存放區 | 「 * 儲存詳細資料 * 」頁面包含儲存後端，集合和磁碟區資訊。「 *LUN 詳細資料 * 」頁面包含與 LUN 相關的資料。當 VMFS 資料存放區使用 NVMe / TCP 或 NVMe / FC 傳輸協定時， * 命名空間詳細資料 * 頁面會包含與命名空間相關的資料。ASA R2 儲存系統型資料存放區不會顯示 Volume 和 Aggregate 詳細資料。 
+
+
+| VVols 資料存放區 | 列出所有磁碟區。您可以從 ONTAP 儲存窗格中展開或移除儲存設備。ASA R2 系統型 VVols 資料存放區不支援此檢視。 
+|===

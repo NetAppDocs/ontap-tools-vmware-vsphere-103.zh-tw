@@ -1,0 +1,52 @@
+---
+permalink: concepts/rbac-learn-about.html 
+sidebar: sidebar 
+keywords: role based access control, rbac, rbac components, learn about rbac 
+summary: 角色型存取控制（ RBAC ）是控制組織內資源存取的安全架構。RBAC 可定義具有特定權限層級的角色來執行動作，而非將授權指派給個別使用者，藉此簡化管理。已定義的角色會指派給使用者，有助於降低錯誤風險，並簡化整個組織的存取控制管理。 
+---
+= 瞭解適用於 VMware vSphere 10 RBAC 的 ONTAP 工具
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+角色型存取控制（ RBAC ）是控制組織內資源存取的安全架構。RBAC 可定義具有特定權限層級的角色來執行動作，而非將授權指派給個別使用者，藉此簡化管理。已定義的角色會指派給使用者，有助於降低錯誤風險，並簡化整個組織的存取控制管理。
+
+RBAC 標準模式包含數種實作技術或複雜度增加的階段。結果是，根據軟體廠商及其客戶的需求，實際的 RBAC 部署可能會有所不同，而且範圍從相對簡單到非常複雜。
+
+
+
+== RBAC元件
+
+在高層級上，每個 RBAC 實作通常都包含數個元件。在定義授權程序時，這些元件會以不同的方式結合在一起。
+
+.權限
+_priv特權 _ 是可以允許或拒絕的行動或功能。它可能很簡單，例如能夠讀取檔案，或是特定於特定軟體系統的更抽象化作業。也可以定義 Privileges 來限制存取 REST API 端點和 CLI 命令。每個 RBAC 實作都包含預先定義的 Privileges ，也可能允許系統管理員建立自訂的 Privileges 。
+
+.角色
+_role_ 是包含一或多個 Privileges 的容器。角色通常是根據特定工作或工作功能來定義。將角色指派給使用者時，會將角色中包含的所有 Privileges 授予使用者。與 Privileges 一樣，實作也包括預先定義的角色，通常允許建立自訂角色。
+
+.物件
+_object_ 代表在 RBAC 環境中識別的真實或抽象資源。透過 Privileges 定義的動作會在相關的物件上執行或與相關的物件一起執行。視實作而定， Privileges 可授予物件類型或特定物件執行個體。
+
+.使用者與群組
+_Users_ 會在驗證後指派或與套用的角色相關聯。某些 RBAC 實作只允許將一個角色指派給使用者，而其他角色則允許每個使用者擁有多個角色，可能一次只有一個角色處於作用中狀態。將角色指派給 _Groups_ 可進一步簡化安全性管理。
+
+.權限
+_permission_ 是將使用者或群組與角色繫結至物件的定義。權限可用於階層式物件模型，階層中的子系可選擇性地繼承這些物件模型。
+
+
+
+== 兩種 RBAC 環境
+
+在使用適用於 VMware vSphere 10 的 ONTAP 工具時，您需要考量兩種不同的 RBAC 環境。
+
+.VMware vCenter Server
+VMware vCenter Server 中的 RBAC 實作可用於限制存取透過 vSphere Client 使用者介面公開的物件。在安裝適用於 VMware vSphere 10 的 ONTAP 工具時， RBAC 環境會延伸至包含代表 ONTAP 工具功能的其他物件。這些物件的存取是透過遠端外掛程式提供。如需詳細資訊，請參閱link:../concepts/rbac-vcenter-environment.html["vCenter Server RBAC 環境"]。
+
+.ONTAP 叢集
+適用於 VMware vSphere 10 的 ONTAP 工具會透過 ONTAP REST API 連線至 ONTAP 叢集，以執行與儲存相關的作業。存取儲存資源是透過與驗證期間提供的 ONTAP 使用者相關聯的 ONTAP 角色來控制。如需詳細資訊、請參閱 link:../concepts/rbac-ontap-environment.html["ONTAP RBAC 環境"] 。

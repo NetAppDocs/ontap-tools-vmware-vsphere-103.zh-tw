@@ -1,0 +1,24 @@
+---
+permalink: configure/configure-network-access.html 
+sidebar: sidebar 
+keywords: network access configuration, export policy, mount operation, ESXi hosts 
+summary: 如果您尚未設定網路存取，則 ESXi 主機的所有探索到的 IP 位址預設都會新增至匯出原則。 
+---
+= 設定網路存取
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您尚未設定網路存取，則 ESXi 主機的所有探索到的 IP 位址預設都會新增至匯出原則。您可以將其設定為新增幾個特定 IP 位址至匯出原則，並排除其餘的位址。不過，當您在排除的 ESXi 主機上執行掛載作業時，作業會失敗。
+
+.步驟
+. 登入 vSphere 用戶端。
+. 在「外掛程式」區段下方的「捷徑」頁面中，選取 * 「 NetApp ONTAP 工具」 * 。
+. 在 ONTAP 工具的左窗格中、瀏覽至 * 設定 * > * 管理網路存取 * > * 編輯 * 。
++
+若要新增多個 IP 位址，請以逗號，範圍，無類別網域間路由（ CIDR ）或全部三者的組合來分隔清單。
+
+. 選擇*保存*。
+

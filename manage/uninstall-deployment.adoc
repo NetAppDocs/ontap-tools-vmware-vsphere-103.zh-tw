@@ -1,0 +1,40 @@
+---
+permalink: manage/uninstall-deployment.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 請依照本節中的指示，順利終止適用於 VMware vSphere 部署的 ONTAP 工具。 
+---
+= 解除安裝適用於 VMware vSphere 的 ONTAP 工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+解除安裝適用於 VMware vSphere 的 ONTAP 工具會刪除工具中的所有資料。
+
+.步驟
+. 從 VMware vSphere 託管資料存放區的 ONTAP 工具移除或移動所有虛擬機器。
++
+** 若要移除虛擬機器，請參閱 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/adding-and-removing-virtual-machinesvsphere-vm-admin.html#GUID-376174FE-F936-4BE4-B8C2-48EED42F110B-en["移除並重新登錄 VM 和 VM 範本"]
+** 若要將其移至非託管資料存放區，請參閱 https://techdocs.broadcom.com/it/it/vmware-cis/vsphere/vsphere/8-0/vcenter-and-host-management-8-0/migrating-virtual-machines-host-management/migration-with-vmotion-host-management/migration-with-storage-vmotion-host-management.html["Storage VMotion"]
+
+
+. link:../manage/delete-ds.html["刪除資料存放區"]在適用於 VMware vSphere 的 ONTAP 工具上建立。
+. 如果您已啟用 VASA 提供者，請在 ONTAP 工具中選取 * 設定 * > * VASA 提供者設定 * > * 取消登錄 * ，以從所有 vCenter 伺服器取消登錄 VASA 提供者。
+. 取消所有儲存後端與 vCenter Server 執行個體的關聯。請參閱 link:../manage/manage-vcenter.html["將儲存設備後端與 vCenter Server 執行個體分離"]。
+. 刪除所有儲存設備後端。請參閱 link:../manage/storage-backend.html["管理儲存後端"]。
+. 從 VMware Live Site Recovery 移除 SRA 介面卡：
++
+.. 以管理員身分使用連接埠 5480 登入 VMware Live Site Recovery 應用裝置管理介面。
+.. 選取 * 儲存複寫介面卡 * 。
+.. 選取適當的 SRA 卡，然後從下拉式功能表中選取 * 刪除 * 。
+.. 確認您知道刪除介面卡的結果，然後選取 * 刪除 * 。
+
+
+. 刪除已登入 VMware vSphere ONTAP 工具的 vCenter 伺服器執行個體。請參閱 link:../manage/manage-vcenter.html["管理 vCenter Server 執行個體"]。
+. 從 vCenter Server 關閉適用於 VMware vSphere VM 的 ONTAP 工具，然後刪除 VM 。
+
+
+.接下來呢？
+link:../manage/delete-deployment.html["移除 FlexVol Volume"]

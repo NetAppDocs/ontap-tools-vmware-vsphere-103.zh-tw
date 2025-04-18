@@ -1,0 +1,31 @@
+---
+permalink: protect/verify-the-replicated-storage-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 設定儲存複寫介面卡（ SRA ）之後、您應該確認受保護的站台和還原站台已成功配對。受保護站台和還原站台都應該可以探索複寫的儲存系統。 
+---
+= 驗證複寫的儲存系統
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定儲存複寫介面卡（ SRA ）之後、您應該確認受保護的站台和還原站台已成功配對。受保護站台和還原站台都應該可以探索複寫的儲存系統。
+
+*開始之前*
+
+* 您應該已設定儲存系統。
+* 您應該已使用 VMware Live Site Recovery 陣列管理員配對受保護的站台和還原站台。
+* 您應該先啟用 FlexClone 授權和 SnapMirror 授權、然後再執行測試、容錯移轉作業和 SRA 容錯移轉作業。
+* 您應該在來源站台和目的地站台上擁有相同的 SnapMirror 原則和排程。
+
+
+.步驟
+. 登入vCenter Server。
+. 瀏覽至*站台恢復*>*陣列型複寫*。
+. 選取所需的陣列配對、並驗證對應的詳細資料。
++
+儲存系統應在受保護的站台和恢復站台中探索、狀態應為「已啟用」。
+
+

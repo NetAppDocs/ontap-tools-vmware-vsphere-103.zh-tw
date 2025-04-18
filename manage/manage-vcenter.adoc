@@ -1,0 +1,63 @@
+---
+permalink: manage/manage-vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: vCenter 是集中管理平台、可讓您控制主機、虛擬機器和儲存後端。 
+---
+= 管理 vCenter Server 執行個體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+vCenter Server 執行個體是集中管理平台、可讓您控制主機、虛擬機器和儲存後端。
+
+
+
+== 將儲存設備後端與 vCenter Server 執行個體分離
+
+vCenter Server 清單頁面會顯示相關的儲存後端數量。每個 vCenter Server 執行個體都可以選擇與儲存後端建立關聯或取消關聯。
+
+.步驟
+. 從網路瀏覽器啟動 ONTAP 工具管理員： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期間提供的 VMware vSphere 管理員認證 ONTAP 工具登入。
+. 從側邊列選取所需的 vCenter Server 執行個體。
+. 針對您要與儲存後端建立關聯或取消關聯的 vCenter Server ，選取垂直省略號。
+. 選擇 * 取消關聯儲存後端 * 。
+
+
+
+
+== 修改 vCenter Server 執行個體
+
+請依照下列步驟修改 vCenter Server 執行個體。
+
+. 從網路瀏覽器啟動 ONTAP 工具管理員： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期間提供的 VMware vSphere 管理員認證 ONTAP 工具登入。
+. 從側邊列選取適用的 vCenter Server 執行個體
+. 針對您要修改的 vCenter Server 選取垂直省略號，然後選取 * 修改 * 。
+. 修改 vCenter Server 執行個體詳細資料、然後選取 * 修改 * 。
+
+
+
+
+== 移除 vCenter Server 執行個體
+
+移除 vCenter Server 之前、您必須移除附加至 vCenter Server 的所有儲存後端。
+
+. 從網路瀏覽器啟動 ONTAP 工具管理員： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期間提供的 VMware vSphere 管理員認證 ONTAP 工具登入。
+. 從側邊列選取適用的 vCenter Server 執行個體
+. 針對您要移除的 vCenter Server 選取垂直省略號，然後選取 * 移除 * 。
++
+
+NOTE: 移除 vCenter Server 執行個體後、應用程式將不再維護這些執行個體。
+
+
+
+當您在 ONTAP 工具中移除 vCenter Server 執行個體時、會自動執行下列動作：
+
+* 外掛程式已取消註冊。
+* 移除外掛程式權限和外掛程式角色。
+

@@ -1,0 +1,33 @@
+---
+permalink: concepts/high-availability.html 
+sidebar: sidebar 
+keywords:  
+summary: '適用於 VMware vSphere 的 ONTAP 工具支援高可用度的 \(HA\) 組態、有助於在故障期間為 VMware vSphere 提供不中斷的 ONTAP 工具功能。' 
+---
+= 適用於 VMware vSphere 的 ONTAP 工具的高可用度
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+適用於 VMware vSphere 的 ONTAP 工具支援高可用度（ HA ）組態、有助於在故障期間為 VMware vSphere 提供不中斷的 ONTAP 工具功能。
+
+高可用度（HA）解決方案可讓您從下列原因造成的停機中快速恢復：
+
+* 主機故障
++
+
+NOTE: 僅支援單一節點故障。
+
+* 網路故障
+* 虛擬機器故障（客體作業系統故障）
+* 應用程式ONTAP （VMware工具）當機
+
+
+VMware vSphere 的 ONTAP 工具無需額外組態即可提供高可用度（ HA ）。
+
+
+NOTE: 適用於 VMware vSphere 的 ONTAP 工具不支援 vCenter HA 。
+
+若要啟用 HA 功能，應在部署期間或之後的 ONTAP 工具中，於 VMware vSphere VM 設定中啟用 CPU 熱新增和記憶體熱插拔。

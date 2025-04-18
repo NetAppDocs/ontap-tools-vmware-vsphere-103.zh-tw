@@ -1,0 +1,42 @@
+---
+permalink: manage/collect-the-log-files.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以從適用於 VMware vSphere 圖形化使用者介面（ GUI ）的 ONTAP 工具中提供的選項、收集適用於 VMware vSphere 的 ONTAP 工具的記錄檔。技術支援可能會要求您收集記錄檔、以協助疑難排解問題。 
+---
+= 收集記錄檔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從 ONTAP Tools Manager 使用者介面中提供的選項、收集 ONTAP 工具 for VMware vSphere 的記錄檔。技術支援可能會要求您收集記錄檔、以協助疑難排解問題。
+
+
+NOTE: 從 ONTAP 工具管理員產生記錄時、會包含所有 vCenter Server 執行個體的所有記錄。從 vCenter 用戶端使用者介面產生記錄的範圍為所選的 vCenter Server 。
+
+.步驟
+. 從網路瀏覽器啟動 ONTAP 工具管理員： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期間提供的 VMware vSphere 管理員認證 ONTAP 工具登入。
+. 從側欄中選擇 * 日誌套件 * 。
++
+此作業可能需要數分鐘的時間。
+
+. 選取 * 產生 * 以產生記錄檔。
+. 輸入日誌套件組合的標籤、然後選取 * 產生 * 。
++
+下載 tar.gz 檔案並傳送給技術支援人員。
+
+
+
+請遵循下列步驟，使用 vCenter 用戶端使用者介面產生記錄套件：
+
+.步驟
+. 登入 vSphere 用戶端
+. 從 vSphere Client 首頁、前往 * 支援 * > * 記錄套件 * > * 產生 * 。
+. 提供記錄套件標籤並產生記錄套件組合。產生檔案時、您可以看到下載選項。下載可能需要一些時間。
+
+
+
+NOTE: 產生的記錄套件會取代過去 3 天或 72 小時內產生的記錄套件。

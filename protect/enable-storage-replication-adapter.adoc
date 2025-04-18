@@ -1,0 +1,28 @@
+---
+permalink: protect/enable-storage-replication-adapter.html 
+sidebar: sidebar 
+keywords:  
+summary: 適用於 VMware vSphere 的 ONTAP 工具可讓您選擇啟用 SRA 功能來設定災難恢復。 
+---
+= 啟用SRA來保護資料存放區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+適用於 VMware vSphere 的 ONTAP 工具可讓您選擇啟用 SRA 功能來設定災難恢復。
+
+.開始之前
+* 您應該已設定 vCenter Server 執行個體和已設定的 ESXi 主機。
+* 您應該已部署適用於 VMware vSphere 的 ONTAP 工具。
+* 您應該已 `.tar.gz`從下載過 SRA 介面卡檔案 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支援網站"^]。
+* 來源和目的地叢集必須先建立相同的自訂 SnapMirror 排程，才能執行 ONTAP 工作流程。
+
+
+.步驟
+. 使用 URL ：登入 VMware Live Site Recovery 應用裝置管理介面 `\https://:<srm_ip>:5480`、然後前往 VMware Live Site Recovery 應用裝置管理介面中的 Storage Replication Adapters 。
+. 選取 * 新介面卡 * 。
+. 將適用於 SRA 外掛程式的 .tar.gz_ 安裝程式上傳至 VMware Live Site Recovery 。
+. 重新掃描介面卡、確認「 VMware Live Site Recovery Storage Replication Adapters （ VMware Live Site Recovery 儲存複寫介面卡）」頁面上的詳細資料已更新。
+

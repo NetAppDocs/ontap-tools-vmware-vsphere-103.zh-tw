@@ -1,0 +1,47 @@
+---
+permalink: manage/delete-ds.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: 刪除資料存放區動作會刪除資料存放區。在 NFS 或 VMFS 資料存放區的情況下、會出現一個對話方塊、其中包含使用資料存放區的 VM 清單。 
+---
+= 刪除資料存放區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+vCenter Server 中所有已探索到 VMware vSphere 或託管 VVols 資料存放區的 ONTAP 工具都支援從資料存放區移除儲存區動作。此動作可讓您從 vVols 資料存放區移除 Volume 。
+
+當特定磁碟區上有 VVols 時、移除選項會停用。除了從資料存放區移除磁碟區外、您還可以刪除 ONTAP 儲存區上選取的磁碟區。
+
+從 vCenter Server 中適用於 VMware vSphere 的 ONTAP 工具刪除資料存放區工作、可執行下列動作：
+
+* 卸載 vVol 容器。
+* 清除 igroup 。如果未使用 igroup 、請從 igroup 移除 iqn 。
+* 刪除 VVOL 容器。
+* 將 Flex Volume 留在儲存陣列上。
+
+
+請依照下列步驟、從 vCenter Server 刪除 ONTAP 工具中的 NFS 、 VMFS 或 VVOL 資料存放區：
+
+.步驟
+. 登入 vSphere 用戶端
+. 在主機系統或主機叢集或資料中心上按一下滑鼠右鍵，然後選取 * NetApp ONTAP tools* > * 刪除 datastori* 。
++
+
+NOTE: 如果有虛擬機器使用該資料存放區、則無法刪除資料存放區。刪除資料存放區之前、您需要將虛擬機器移至不同的資料存放區。如果資料存放區屬於受保護的主機叢集、則無法選取 Volume delete （磁碟區刪除）核取方塊。
+
++
+.. 在 NFS 或 VMFS 資料存放區的情況下、會出現一個對話方塊、其中包含使用資料存放區的 VM 清單。
+.. 如果 VMFS 資料存放區是在 ASA R2 系統上建立，而且是保護的一部分，則需要在刪除資料存放區之前先取消保護。
+.. 在 vVols 資料存放區的情況下、只有在沒有與資料存放區相關聯的 vVols 時、刪除資料存放區動作才會刪除資料存放區。刪除資料存放區對話方塊提供從 ONTAP 叢集刪除磁碟區的選項。
+.. 如果是以 ASA R2 系統為基礎的 vVols 資料存放區，則刪除備份磁碟區的核取方塊將不適用。
+
+
+. 若要刪除 ONTAP 儲存設備上的備份磁碟區、請選取 * 刪除 ONTAP 叢集上的磁碟區 * 。
++
+
+NOTE: 您無法刪除 ONTAP 叢集上屬於受保護主機叢集一部分的 VMFS 資料存放區的磁碟區。
+
+
