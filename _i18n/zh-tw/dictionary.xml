@@ -968,7 +968,6 @@
   <block id="9b97b7bd5e0a87be7bf218224ada83cf" category="cell">需求</block>
   <block id="d9fa81fca11f55d9fd9f33b399ab9cd6" category="cell">您的價值</block>
   <block id="89d40dff7639b41cbef7fe2a44f484ba" category="cell">ONTAP 工具應用程式的 IP 位址</block>
-  <block id="8a446ff962c6ec80c26cad578454c2af" category="cell">用於節點間通訊的節點互連 IP 位址</block>
   <block id="5759f8c1a9261b4c6c0c86f5089433b5" category="cell">第一個節點的 DNS 主機名稱</block>
   <block id="68eeeed01bf11dc7edb656408cbfd0b6" category="cell">主要DNS伺服器</block>
   <block id="9fab0542abb763e3e75e782994d85d07" category="cell">次要DNS伺服器</block>
@@ -2161,4 +2160,8 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">版本資訊</block>
   <block id="ed8359854c43609fca7bc8a46cca9eac" category="sidebar">ONTAP 工具 9 和 ONTAP 工具 10 的功能比較</block>
   <block id="dd018bb6638d4453bb4643baac23fad3" category="sidebar">升級適用於 VMware vSphere 的 ONTAP 工具</block>
+  <block id="0d8dd733c5e5b6b5d173af6dbb7e3dff" category="list-text">ONTAP 工具 IP 位址是與 ONTAP 工具通訊的主要介面。</block>
+  <block id="0c72f5748e7c096b829fa8c13bdb6b7f" category="list-text">IPv4 是節點組態的 IP 位址元件，可用於在節點上啟用診斷 Shell 和 SSH 存取，以進行除錯和維護。</block>
+  <block id="e10687c7d1d3c93cdb138a57d9d14bdb" category="list-text">節點互連 IP 位址用於內部通訊。</block>
+  <block id="3e691305a01d01aac8e30b75bd1d8a27" category="cell">用於內部通訊的節點互連 IP 位址</block>
 </blocks>

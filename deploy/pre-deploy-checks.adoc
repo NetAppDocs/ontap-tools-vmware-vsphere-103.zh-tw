@@ -63,7 +63,7 @@ summary: 在部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該先
 | ONTAP 工具應用程式的 IP 位址 |  
 
 
-| 用於節點間通訊的節點互連 IP 位址 |  
+| 用於內部通訊的節點互連 IP 位址 |  
 
 
 | 第一個節點的 DNS 主機名稱 |  

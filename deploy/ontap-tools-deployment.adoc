@@ -81,6 +81,9 @@ NOTE: 切勿將適用於 VMware vSphere 虛擬機器的 ONTAP 工具儲存在其
 
 NOTE: 不支援 Pure IPv6 。同時包含 IPv6 和 IPv4 位址的 VLAN 支援混合模式。
 
+** ONTAP 工具 IP 位址是與 ONTAP 工具通訊的主要介面。
+** IPv4 是節點組態的 IP 位址元件，可用於在節點上啟用診斷 Shell 和 SSH 存取，以進行除錯和維護。
+** 節點互連 IP 位址用於內部通訊。
 
 
 . 使用 vCenter Server 8.0.3 版本時，請在 * 自訂硬體 * 視窗中，啟用 *CPU Hot add* 和 * 記憶體熱插拔 * 選項，以允許 HA 功能。
