@@ -384,8 +384,6 @@
   <block id="b7d863d6846eaf1689410c02279f9ea6" category="doc">新增儲存後端</block>
   <block id="442290d4045e6c10552f661da43a9706" category="paragraph">新增儲存後端可讓您建置 ONTAP 叢集。</block>
   <block id="78166ce4ccceeedfbf6aeb8682851072" category="paragraph">*關於此工作*</block>
-  <block id="0333b8e59818e95f8c3464384f005977" category="paragraph">若要將儲存後端新增至多租戶架構中的全域範圍叢集，請使用 ONTAP 工具管理員新增儲存後端。將儲存後端新增至全域叢集之後，您必須將叢集與所需的 vCenter 租戶建立關聯。vCenter 租戶必須搭載所需的儲存虛擬機器（ Storage Virtual Machines ， SVM ）。這可讓 SVM 使用者配置 vVols 資料存放區。您可以使用 SVM 在 vCenter 中新增儲存設備。</block>
-  <block id="91310533ef068c4c3d95d7102fd2e7da" category="paragraph">若要將儲存後端新增至本機範圍叢集，請使用 vCenter 伺服器上的 ONTAP 工具外掛程式，直接新增 ONTAP 系統。</block>
   <block id="da6388fdc3d2fad794be9aa033101c19" category="open-title">使用 ONTAP 工具管理器</block>
   <block id="a761d3a6a5565687c80a0d269ca343c4" category="admonition">在多租戶設定中，您可以全域新增儲存後端叢集，並在本機新增 SVM 以使用 SVM 使用者認證。</block>
   <block id="af97740fd99b637615a0fe129d5fc42f" category="list-text">從網路瀏覽器啟動 ONTAP 工具管理員：<block ref="a2fad8db83c338dbc95675bd05c70607" prefix=" " category="inline-code"></block></block>
@@ -394,7 +392,6 @@
   <block id="9cb992b5ee53404c646502db030f7c27" category="list-text">新增儲存後端，並提供伺服器 IP 位址或 FQDN ，使用者名稱和密碼詳細資料。</block>
   <block id="60f27fc86b38229b1a666fd3c7b129f1" category="admonition">支援 IPv4 和 IPv6 位址管理階層。</block>
   <block id="a6fd0b4332e8ac1bd18da3d605f3f558" category="open-title">使用 vSphere 用戶端使用者介面</block>
-  <block id="15d9ec0601efc7a09529f55671b2bf35" category="admonition">當您使用 vSphere 用戶端使用者介面新增儲存後端時， vVols 資料存放區不支援直接新增 SVM 使用者。</block>
   <block id="3c4b541b5d5310d633c23010dd81989e" category="list-text">登入 vSphere 用戶端</block>
   <block id="3a3cf1aabccd549ecea01e8e5bd01415" category="list-text">在捷徑頁面中，選取外掛程式區段下方的 * NetApp ONTAP tools* 。</block>
   <block id="1371ece860fedc2eae03b50872f67242" category="list-text">新增儲存後端，並提供伺服器 IP 位址，使用者名稱，密碼和連接埠詳細資料。</block>
@@ -2164,4 +2161,6 @@
   <block id="0c72f5748e7c096b829fa8c13bdb6b7f" category="list-text">IPv4 是節點組態的 IP 位址元件，可用於在節點上啟用診斷 Shell 和 SSH 存取，以進行除錯和維護。</block>
   <block id="e10687c7d1d3c93cdb138a57d9d14bdb" category="list-text">節點互連 IP 位址用於內部通訊。</block>
   <block id="3e691305a01d01aac8e30b75bd1d8a27" category="cell">用於內部通訊的節點互連 IP 位址</block>
+  <block id="7ffde475c4ea55e9fc7c8c11becbc141" category="paragraph">如果 vCenter 在多租戶設定中扮演相關 SVM 的租戶，請使用 ONTAP 工具管理員來新增叢集。將儲存後端與 vCenter Server 建立關聯，以將其全域對應至已登入的 vCenter Server 執行個體。vCenter 租戶必須搭載所需的儲存虛擬機器（ Storage Virtual Machines ， SVM ）。這可讓 SVM 使用者配置 vVols 資料存放區。您可以使用 SVM 在 vCenter 中新增儲存設備。</block>
+  <block id="112fa4a14bcd73096ce0a79df18e90c8" category="admonition">透過 vSphere 用戶端使用者介面設定儲存後端時，請務必注意 vVols 資料存放區不支援直接新增 SVM 使用者。</block>
 </blocks>
