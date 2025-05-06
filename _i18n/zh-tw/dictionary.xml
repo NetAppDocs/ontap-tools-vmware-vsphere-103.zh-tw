@@ -1636,34 +1636,20 @@
   <block id="6d710894cd1d83594944bdb2f558f3dd" category="paragraph">您可以使用「管理欄」選項來隱藏或顯示不同的欄。</block>
   <block id="c46965d55afff0a89c0bb3bd26c0a653" category="summary">移轉儲存資料時、會使用 REST API 手動建立儲存後端。移轉 VASA Provider 資料時，資料會從現有的 Derby 資料庫匯出，並匯入至 MongoDB 資料庫。</block>
   <block id="e43b5fd407b2bc9fda1a39851a48f9bb" category="doc">從適用於 VMware vSphere 9.x 的 ONTAP 工具移轉至 10.3</block>
-  <block id="8c5a94dd08e58279f7461d929aa633e6" category="paragraph">移轉儲存資料時、會使用 REST API 手動建立儲存後端。移轉 VASA Provider 資料時，資料會從現有的 Derby 資料庫匯出，並匯入至 MongoDB 資料庫。</block>
-  <block id="b191a7ff08bb6435186d922c59ff1907" category="admonition">只有當設定僅為 VASA Provider 功能提供服務時，您才應移轉適用於 VMware vSphere 9.xx 的 ONTAP 工具設定。</block>
   <block id="656a2ce4c62bd399a29a0cc087a7eb83" category="admonition">從適用於 VMware vSphere 9.x 的 ONTAP 工具移轉至 10.3 之後，含 NVMe / FC 傳輸協定的 vVols 資料存放區無法運作，因為 ONTAP 工具 10.3 只支援使用 VMFS 資料存放區的 NVMe 。</block>
   <block id="f9f52fdfc3b658d087ef0d1715cc2008" category="paragraph">您可以從適用於 VMware vSphere 9.12D1 和 9.13D2 版本的 ONTAP 工具移轉至 10.3 。</block>
   <block id="12f864a7f79090b1b0f169109899eb43" category="admonition">在升級至修補程式版本之前，您必須從目前版本取得 OVA 備份。</block>
   <block id="135dda3ac3096b9bd31ceb04b513c216" category="section-title">一般移轉步驟</block>
-  <block id="98db65da9a06955541a5451543410fde" category="list-text">部署適用於 ONTAP 工具的 OVA for VMware vSphere 10.3 版本。</block>
   <block id="e53a5f7966ebf538ff3fbae3277020fa" category="list-text">新增您要移轉至 ONTAP 工具的 vCenter Server 執行個體，以取得 VMware vSphere 10.3 版本。請參閱。<block ref="fbc3413db4202f1fe331f16af6b38f13" category="inline-link-macro-rx"></block></block>
-  <block id="0073dc7bd5514abf0999b550aa754930" category="list-text">從適用於 VMware vSphere 外掛 vCenter 伺服器 API 的 ONTAP 工具、在本機上建置儲存後端。將儲存設備新增為本機範圍的儲存設備、以進行移轉。</block>
-  <block id="0cd5eb24f781f0b49a6c666e5220c98c" category="list-text">只有在觸發資料存放區探索工作（可能需要 30 分鐘才能觸發）之後、才能在適用於 VMware vSphere 10.3 的 ONTAP 工具中看到從適用於 VMware vSphere 9.xx 的 ONTAP 工具移轉的 NFS 和 VMFS 資料存放區。確認「 VMware vSphere 外掛程式」使用者介面之 ONTAP 工具的「概觀」頁面上是否顯示資料存放區。</block>
   <block id="a556515aafd07bfe4c2dfa6abbaa4ccb" category="section-title">SRA 移轉步驟</block>
   <block id="b4c20aabb2d8056ffe9e2b60a0164bf2" category="paragraph">移轉之前，請確定其中一個站台處於受保護狀態，另一個站台處於恢復狀態。</block>
-  <block id="c7c25af309bd84b7749f1862027abc3f" category="admonition">如果容錯移轉剛剛完成，且重新保護擱置中，請勿移轉。完成重新保護，然後執行移轉。完成恢復計畫測試後，請清理測試恢復並開始移轉。</block>
-  <block id="a0e42a34ad94909291f9863e606095c3" category="list-text">請執行下列步驟，在 VMware Live Site Recovery 使用者介面中刪除適用於 VMware vSphere 9.xx 版本的工具 ONTAP 介面卡：</block>
   <block id="de7cd16aa682868ad900edd519b06059" category="list-text">前往 VMware Live Site Recovery 組態管理頁面</block>
-  <block id="0f47e7ab13b9f8031de10689d97b861b" category="list-text">移至 * 儲存複寫介面卡 * 區段</block>
-  <block id="f803051356e1156c49b0c23af17c876b" category="list-text">選取省略符號功能表，然後選取 * 重設組態 *</block>
-  <block id="a91d8b1466c010c4ae95c7bc969d60d2" category="list-text">選取省略符號功能表，然後選取 * 刪除 *</block>
   <block id="77efba168b5a2059c2d20a1e2673f5d1" category="paragraph">在保護站點和恢復站點上執行這些步驟。</block>
-  <block id="3bf1c404c0b424b9520fcc0dc5fb8998" category="list-text">請依照中的步驟、在保護和恢復站台上安裝適用於 VMware vSphere 10.3 介面卡的 ONTAP 工具 <block ref="9b6610ae0d9b3f2df042445cc8433cf4" category="inline-link-macro-rx"></block></block>
-  <block id="989a54cf1e604ac6307e40dbc2072ca2" category="list-text">在 VMware Live Site Recovery 使用者介面頁面上，執行 * 探索陣列 * 和 * 探索裝置 * 作業，並驗證這些裝置在移轉之前是否顯示正常。</block>
   <block id="b7b423b5e37e418ae4659bcf83c729b5" category="section-title">Vasa Provider 移轉步驟</block>
-  <block id="e316aaa000b8dea913558dbe47e2ab03" category="list-text">在適用於 VMware vSphere 的現有 ONTAP 工具上啟用 Derby 連接埠 1527 。若要啟用連接埠，請使用 root 使用者登入 CLI ，然後執行下列命令：</block>
   <block id="fdb5b6876d97a075f0bc2a07cd4be907" category="list-text">部署適用於 VMware vSphere 10.3 的 OVA for ONTAP 工具。</block>
   <block id="a8534b379980a6bb97915d2890ad3522" category="inline-link-macro">新增 vCenter Server 執行個體</block>
   <block id="34b17f133cdce8c13fd8b812b8c11211" category="list-text">新增您要移轉至 ONTAP 工具的 vCenter Server 執行個體，以取得 VMware vSphere 10.3 版本。請參閱。 <block ref="946669e64e0e42585f18099dec81ec03" category="inline-link-macro-rx"></block></block>
   <block id="1c9a04fa9475b21ef9be5e7bd0f30822" category="list-text">從遠端外掛 vCenter 伺服器 API 本機建立內建儲存後端。將儲存設備新增為本機範圍以進行移轉。</block>
-  <block id="c713abd43a97c8915e6503cd7f93ad36" category="list-text">發出下列 API 呼叫以進行移轉：</block>
   <block id="4b2e39d58448cd6246edaab6e2789245" category="paragraph">* HTTP 方法和端點 *</block>
   <block id="0b0231c1815d06ad4701a091ce91a740" category="paragraph">此 REST API 呼叫使用下列方法和端點。</block>
   <block id="d40e9450da0b47980b8d20417aa05da7" category="cell">* HTTP方法*</block>
@@ -1672,32 +1658,18 @@
   <block id="b46b241331d5bfe90afd25ec36605c07" category="paragraph">* 處理類型 *</block>
   <block id="288aae25bc408055f50c21c991903a44" category="paragraph">非同步</block>
   <block id="a62fbfbe1fa2fbcd3ff1ab71d9f0cf7a" category="paragraph">* 目前範例 *</block>
-  <block id="f8528d0e8a8584338a8fc7938174cdc1" category="paragraph">/api/v1/vCents/{vcguid}/Migration-jobs</block>
-  <block id="2ac6f49c394add121a7d6749715cf7ef" category="paragraph">* JSON 輸入範例 * 申請從 9.12 和 9.13 移轉的主體：</block>
   <block id="80e56be2a784c57e6087b3af6db66ad9" category="paragraph">{ "otv_ip" ： "10.12.13.45" 、 "Vasa_provider_inenticates" ： { "username" ： "vasauser" 、 "password" ： "*******" } "database_password" ： """"****" }</block>
   <block id="654a9186fe9a47c1397903b9228f2c36" category="paragraph">其他版本移轉的要求本文：</block>
   <block id="5cda9daf0baf81a9f615b94e32abb4a8" category="paragraph">{ "otv_IP" ： "10.12.13.45" 、 "Vasa_provider_inenticates" ： { "username" ： "vasauser" 、 "password" ： "*******" } }</block>
   <block id="18009c9216d59118fb460184e2ec0a3d" category="paragraph">* JSON 輸出範例 *</block>
   <block id="492fdcd87814cf3c979a27709fc29350" category="paragraph">工作物件即會傳回。您應該儲存工作識別碼、以便在下一步中使用。</block>
   <block id="372ff7cae2da4e0d6205af97a48a61eb" category="paragraph">{ "id" ： 123 、 "overview_id" ： "d50073ce-35b4-4c51-9d2e-4ce66f802c35" 、 "status" ： " 執行中 " }</block>
-  <block id="aee895c24ce8b1de4db4cd6c7eabc1e3" category="list-text">使用下列 URI 檢查狀態：</block>
-  <block id="142e4d3f8edb2747fa0e3d260133b8c1" category="paragraph">工作完成後、請驗證移轉報告。報告是工作資料的一部分，可從工作回應中看到。</block>
-  <block id="2d3feeef6331c15c90e4aea5b6cc1e41" category="list-text">將適用於 VMware vSphere 儲存供應商的 ONTAP 工具新增至 vCenter Server 和 <block ref="a322950c1b9e940cddaca5a47e2d5895" category="inline-link-macro-rx"></block>。</block>
   <block id="009dbe214d15197679fe0b95a8a01cc3" category="list-text">從維護主控台停止適用於 VMware vSphere 儲存供應商 9.10/9.11/9.12/9.13 VASA Provider 服務的 ONTAP 工具。</block>
   <block id="ffdec42d5d13cecca850e153f75748ec" category="paragraph">請勿刪除 VASA Provider 。</block>
   <block id="4bf6186a3a16efffdaebdafdd4fcaf4b" category="paragraph">一旦停止舊的 VASA Provider ， vCenter Server 就會容錯移轉至適用於 VMware vSphere 的 ONTAP 工具。所有的資料存放區和 VM 都可以存取、並可從適用於 VMware vSphere 的 ONTAP 工具取得。</block>
-  <block id="ba5c200a0d4600ec4fe2ef79c26593b8" category="list-text">使用下列 API 執行修補程式移轉：</block>
-  <block id="41e9abb5d58ca11ff36c3067c273a762" category="paragraph">修補程式「 /api/v1/vCenter/56d373bd-4163-44f9-a872-9adabb008ca9/Migrate-jobs/84dr73bd-9173-65r7-w345-8ufdbb887d43</block>
   <block id="bdfee7ad87d9004e1091e6e1762d0e84" category="paragraph">* JSON 輸入範例 *</block>
   <block id="f663ec26fcc5dbf0e82a2df73c30a3e3" category="paragraph">要求主體是空的，用於修補作業。</block>
-  <block id="603041e40db447bbdd32fd4b4c2f994d" category="admonition">UUID 是移轉後 API 回應時傳回的移轉 UUID 。</block>
-  <block id="e4453a0aab117b65b26edb59d78793fd" category="paragraph">一旦修補程式移轉 API 成功執行，所有 VM 都會遵守儲存原則。</block>
-  <block id="29d0e7add25c8163223dbcb531abf7d0" category="paragraph">成功移轉之後、將 ONTAP 工具 10.3 登錄至 vCenter Server 之後、請執行下列步驟：</block>
-  <block id="6b50b8836085008a8950ddeafeb7453a" category="list-text">重新整理所有主機上的憑證。</block>
-  <block id="9a43f64b9545dfa5ddfcc70dbc73d001" category="list-text">執行資料存放區（ DS ）和虛擬機器（ VM ）作業之前、請先等待一段時間。等待時間取決於設定中的主機數量， DS 和 VM 。當您不等待時、作業可能會間歇性失敗。</block>
-  <block id="422c2a3517291219d45e5d0be95be9d1" category="paragraph">升級後，如果虛擬機器規範狀態已過期，請使用下列步驟重新套用虛擬機器儲存原則：</block>
   <block id="15e560ab707fa2bf2b7b0833adbe8bb9" category="list-text">瀏覽至資料存放區，然後選取 * 摘要 * &gt; * VM 儲存原則 * 。</block>
-  <block id="578a0636e92ae2e1b6afe3bdc7c9f9b3" category="paragraph">在 * VM 儲存原則相容性 * 下，您可以看到法規遵循狀態。它顯示為 * 過時 *</block>
   <block id="325367fe0120f7c1592bf3028da84bee" category="list-text">選取儲存 VM 原則和對應的 VM</block>
   <block id="c16f1c2a54634bdad6dee177f8131ef5" category="list-text">選取 * 套用 *</block>
   <block id="b180a96ee0634f423c4629bca8858873" category="paragraph">在 * VM 儲存原則相容性 * 下的法規遵循狀態現在顯示為相容。</block>
@@ -2164,4 +2136,39 @@
   <block id="7ffde475c4ea55e9fc7c8c11becbc141" category="paragraph">如果 vCenter 在多租戶設定中扮演相關 SVM 的租戶，請使用 ONTAP 工具管理員來新增叢集。將儲存後端與 vCenter Server 建立關聯，以將其全域對應至已登入的 vCenter Server 執行個體。vCenter 租戶必須搭載所需的儲存虛擬機器（ Storage Virtual Machines ， SVM ）。這可讓 SVM 使用者配置 vVols 資料存放區。您可以使用 SVM 在 vCenter 中新增儲存設備。</block>
   <block id="112fa4a14bcd73096ce0a79df18e90c8" category="admonition">透過 vSphere 用戶端使用者介面設定儲存後端時，請務必注意 vVols 資料存放區不支援直接新增 SVM 使用者。</block>
   <block id="cbc2b2dc8b4ce185c5ef0381522a3cfc" category="admonition">您不需要管理員帳戶，即可將 vCenter 執行個體新增至 ONTAP 工具。您可以建立自訂角色，而無需具有有限權限的管理員帳戶。如 <block ref="31ec071db09c0fa81e221bfe3044a965" category="inline-link-macro-rx"></block> 需詳細資訊、請參閱。</block>
+  <block id="a9919517205886b598c13e9032a09059" category="paragraph">在儲存資料移轉期間，會使用 REST API 手動建立儲存後端。VASA Provider 資料移轉包括從現有的 Derby 資料庫匯出資料，並將其匯入至 MongoDB 資料庫。</block>
+  <block id="b7760802f5560cd215cd7dee93951bfd" category="admonition">只有在使用 VASA Provider 和 VVols 時，才需要從適用於 VMware vSphere 9.XX 的 ONTAP 工具進行移轉。</block>
+  <block id="3b399f32cd58f37d5c326f406d9b291f" category="list-text">部署適用於 VMware vSphere 10.3 版本之 ONTAP 工具的 OVA 。</block>
+  <block id="7949ac5c6b3d4313dd4d5969af832925" category="list-text">使用 vCenter 伺服器上的 ONTAP 工具外掛程式，在本機上建置儲存後端。將儲存設備新增為本機範圍的儲存設備，以進行移轉。</block>
+  <block id="46ec37b71ccf8c993dcbf7cb78fe2af7" category="admonition">如果容錯移轉已完成，但重新保護仍在擱置中，請勿開始移轉。在繼續移轉之前，請先確認重新保護程序已完成。如果正在進行測試容錯移轉，請清理測試容錯移轉並開始移轉。</block>
+  <block id="da2f48d729eae4ca1010b4a077b66b02" category="list-text">請依照下列步驟，在 VMware 網站恢復中刪除適用於 VMware vSphere 9.xx 的工具 ONTAP 介面卡：</block>
+  <block id="b2c26a87d051d5889e6d2e4ab1fc79de" category="list-text">移至 * 儲存複寫介面卡 * 區段。</block>
+  <block id="b80a5fe26546f4090c014df2108347ab" category="list-text">從省略號功能表中，選取 * 重設組態 * 。</block>
+  <block id="1ab7bd22ce5077185a70517ea0db34ec" category="list-text">從省略符號功能表中選取 * 刪除 * 。</block>
+  <block id="108af0df3d39dcc8f1002f2564a37e20" category="list-text">按照中的步驟安裝適用於 VMware vSphere 10.3 介面卡的 ONTAP 工具<block ref="9b6610ae0d9b3f2df042445cc8433cf4" category="inline-link-macro-rx"></block>。</block>
+  <block id="e3e32085ef48d00b185f9ae05a428520" category="list-text">在 VMware Live Site Recovery 使用者介面頁面上，執行 * 探索陣列 * 和 * 探索裝置 * 作業，並確認裝置在移轉之前顯示為。</block>
+  <block id="6136a81a0ac0e402d6b510c2488f1d36" category="list-text">若要在現有的 ONTAP 工具上啟用 VMware vSphere 的 Derby 連接埠 1527 ，請啟用 root 使用者，並透過 SSH 登入 CLI 。然後執行下列命令：</block>
+  <block id="b5bf1eb9fc501e53457cde004db09086" category="list-text">從 Swagger 或 Postman 發出下列 API 以進行移轉。</block>
+  <block id="45b4835ddd7ad16076afa0b51bf12d2a" category="paragraph">Curl -X POST<block ref="a9f22201e72a1b8e399b24ae5e861616" category="inline-link-rx"></block></block>
+  <block id="d15764d5088db3a571ec9ccf86341552" category="paragraph">您可以通過以下 URL 訪問 Swagger ：“ https://$FQDN_IP_PORT/, 例如：<block ref="1f852f41a6044590b385b39eaef5531e" category="inline-link-rx"></block>。</block>
+  <block id="54caf31d7246402cdcb6cd5c255c5c64" category="paragraph">Curl -X POST<block ref="4042f1acb8fe47ca556f8b938a8d6e08" category="inline-link-rx"></block></block>
+  <block id="40e0776d71fd5d591d53e451a6006fa9" category="paragraph">從 9.12 和 9.13 移轉的申請主體：</block>
+  <block id="91377d2edc3d930017c1b8c4679bdb89" category="list-text">使用 Swagger 中的下列 URI 檢查狀態：</block>
+  <block id="b02dd8a7793406878f54951af581d6f2" category="paragraph">完成工作後，請檢閱移轉報告。此報告包含在工作資料中，可從工作回應存取。</block>
+  <block id="4551975cd29f0bfb98cd73d6f5cb8388" category="inline-link-macro">註冊 VASA Provider</block>
+  <block id="0edd46e4487a559e489864eebe825e64" category="list-text">將適用於 VMware vSphere 儲存提供者的 ONTAP 工具新增至 vCenter Server ，並<block ref="c283b8bc021fee7e6c856fce39783a46" category="inline-link-macro-rx"></block>搭配適用於 VMware vSphere 的 ONTAP 工具。</block>
+  <block id="588348e2b65e0439aeb5d92799e13781" category="inline-link-macro">啟用 VASA Provider</block>
+  <block id="afba674b121ae477fe8d69c9920021ef" category="list-text"><block ref="3f0f412beb77bd4bc4dc7f97f661a149" category="inline-link-macro-rx"></block>適用於 VMware vSphere 10.3 的 ONTAP 工具服務。</block>
+  <block id="43278c46500368f0b18a81d5a9eabd6c" category="list-text">只有在觸發資料存放區探索工作（可能需要 30 分鐘才能完成）之後，才能在適用於 VMware vSphere 10.3 的 ONTAP 工具中看到從 ONTAP 工具移轉的 NFS 和 VMFS 資料存放區。確認 ONTAP 工具的「 VMware vSphere 外掛程式」使用者介面頁面概觀頁面上是否顯示資料存放區。</block>
+  <block id="96b2fedcc932770f843418dedfe7f004" category="list-text">使用 Swagger 或 Postman 中的下列 API 執行修補程式移轉：</block>
+  <block id="99a490d727b23ee47f3b441a7342d420" category="paragraph">Curl -X 修補程式<block ref="fd07e34d045cf59e25acb7168e60f530" category="inline-link-rx"></block></block>
+  <block id="84a75f6b0a005e405f2680d9ab007b12" category="admonition">UUID 是移轉後 API 所傳回的移轉 UUID 。</block>
+  <block id="6282a0b7136c4d492053004c35f8e976" category="paragraph">執行修補程式移轉 API 之後，所有 VM 都會遵守儲存原則。</block>
+  <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">下一步</block>
+  <block id="3df06925c881bdeaea08f90799e17cfa" category="paragraph">完成移轉並將 ONTAP 工具 10.3 登錄至 vCenter Server 之後，請遵循下列步驟：</block>
+  <block id="5db743b53293821cee54f2f6de3ecd01" category="list-text">等待 * 探索 * 完成，所有主機上的憑證都會自動重新整理。</block>
+  <block id="5d1246969958082ec28a05d01c3e60f8" category="list-text">請在開始資料存放區和虛擬機器作業之前，預留足夠的時間。所需的等待時間會因組態中的主機，資料存放區和虛擬機器數量而異。若未能等待，可能會導致間歇性作業故障。</block>
+  <block id="76dc960090031506bd84c78f38fe040e" category="paragraph">升級後，如果虛擬機器的規範狀態已過期，請使用下列步驟重新套用儲存原則：</block>
+  <block id="0f4e59ab0634b5a1f97823bc94b0f039" category="paragraph">在 * VM 儲存原則相容性 * 下的法規遵循狀態顯示為 * 過時 * 。</block>
+  <block id="3e771c8c630b8cfd1ddd0dfc7e8e7c85" category="list-text"><block ref="3e771c8c630b8cfd1ddd0dfc7e8e7c85" category="inline-link-macro-rx"></block></block>
 </blocks>
