@@ -432,15 +432,10 @@
   <block id="a4190631e34ccca7730e594f6655cc87" category="paragraph">使用適用於 VMware vSphere 的 ONTAP 工具，您可以在 ESXi 主機上設定逾時和其他值，以確保最佳效能和成功容錯移轉。適用於 VMware vSphere 的 ONTAP 工具集的價值是以內部 NetApp 測試為基礎。</block>
   <block id="9232ab7e918fc93452c2dc7c8fab1b8c" category="paragraph">您可以在ESXi主機上設定下列值：</block>
   <block id="ab9d8dfb65807487a899df1683e128fa" category="section-title">HA/CNA 介面卡設定</block>
-  <block id="d3c41b5a4cf556f3a598cc1221e08ee4" category="paragraph">設定 NetApp 儲存系統的建議 HBA 逾時設定。</block>
-  <block id="3225a10b07f1580f10dee4abc3779e6c" category="cell">參數</block>
   <block id="c77eb099ccd3a59aa3a56c3c98c84669" category="cell">將此值設為 ...</block>
   <block id="117704664d6cada78ac3107380f63d23" category="cell">disk.QFullSampleSize.</block>
-  <block id="07b21acb18ec7b34bd91453e33448369" category="cell">32 適用於所有組態。設定此值有助於避免I/O錯誤。</block>
   <block id="f66a3c183f0e736240b77f8b755c880e" category="cell">disk.QFullThreshold</block>
-  <block id="ed6604a4485d16e1285db04ae3d4279f" category="cell">8 適用於所有組態。設定此值有助於避免I/O錯誤。</block>
   <block id="19c08de7404551288e1274186e039ef4" category="cell">Emulex FC HBA逾時</block>
-  <block id="6ea7e3b1d2b04c77c55309b1aaa41f8c" category="cell">預設值。</block>
   <block id="d46cddda4da7ec11f17472d11df95b68" category="cell">QLogic FC HBA逾時</block>
   <block id="c803cf4eb4cbf3a6b12b1e1cc3443970" category="section-title">MPIO 設定</block>
   <block id="6a56526090ecb77854d07be849799242" category="paragraph">MPIO 設定可定義 NetApp 儲存系統的偏好路徑。它們會判斷哪些可用路徑已最佳化（而非透過互連纜線的非最佳化路徑），並將偏好的路徑設為其中一條路徑。</block>
@@ -705,19 +700,13 @@
   <block id="89f7633ad6a1e114cebf9902aa42fd5c" category="paragraph">NFS vStorage API for Array Integration （ NFS VAAI ）外掛程式是整合 VMware vSphere 和 NFS 儲存陣列的軟體元件。使用適用於 VMware vSphere 的 ONTAP 工具安裝 NFS VAAI 外掛程式，以運用 NFS 儲存陣列的進階功能，將某些與儲存相關的作業從 ESXi 主機卸載到儲存陣列本身。</block>
   <block id="bf25ac3fc5bee2b3ec36e32661767682" category="inline-link">適用於VMware VAAI的NetApp NFS外掛程式</block>
   <block id="f9fcb823ee6471ecceb63c9625d2c8fc" category="list-text">下載<block ref="e6fae45561f1786d6f3534aff65b3377" category="inline-link-rx"></block>安裝套件。</block>
-  <block id="e27bb3e78ef59cd560e56215a182f3b3" category="list-text">請確定您擁有 ESXi 主機 7.0U3 最新修補程式或更新版本，以及 ONTAP 9.14.1 或更新版本。</block>
   <block id="a585389d21dd9fbdbdc15072bd5d7010" category="list-text">掛載 NFS 資料存放區。</block>
-  <block id="3efe2db5c0b83bc2774d6061359381ed" category="list-text">將 DataMover ． HardwareAcceleratedMove ， DataMover ． HardwareAcceleratedInit 和 VMFS3 ． HardwareAcceleratedLocking 主機設置的值設置爲“ 1 ”。若要自動設定這些值，請套用 EXSI 主機的建議設定。請參閱 <block ref="a13757a488cc72436349db8983ce6613" category="inline-link-macro-rx"></block>。</block>
-  <block id="957daa20d20cf15a7839d7e44ecdb2ab" category="list-text">使用 vserver NFS modify -vserver vserver_name -vStorage enabled 命令，在儲存虛擬機器（ SVM ）上啟用 vStorage 選項。</block>
-  <block id="d5676260c3a3d58c4d9ebd79f3558bac" category="list-text">請確定您擁有 vSphere 7.0U3 最新的修補程式版本。</block>
-  <block id="ebfe914a124eb1ec0cc1d8f6d6c420cb" category="list-text">NetApp NFS VAAI 外掛程式 2.0.1 （組建 16 ）支援 vSphere 8.x 。</block>
   <block id="dbf218ab7bc36005b7fdd93dda1f6eda" category="list-text">在外掛程式區段下，選取 * 快速鍵 * &gt; * NetApp ONTAP tools* 。</block>
   <block id="0e57b7b27807ae2427ad1a654eca765e" category="list-text">選取 * 設定 * &gt; * NFS VAAI 工具 * 。</block>
   <block id="42e4695fefd280ddc3a6f11124586510" category="list-text">當 VAAI 外掛程式上傳至 vCenter Server 時、請在 * 現有版本 * 區段中選取 * 變更 * 。如果 VAAI 外掛程式未上傳至 vCenter Server 、請選取 * 上傳 * 按鈕。</block>
   <block id="0aa364b40943456fe1d59c4a4a6ee32d" category="list-text">瀏覽並選取<block ref="74f7b54ea713d9f5b69839982911bbf7" prefix=" " category="inline-code"></block>檔案，然後選取 * 上傳 * 將檔案上傳至 ONTAP 工具。</block>
   <block id="75650b415bb2c723c71117c59992e489" category="list-text">選取 * 安裝在 ESXi 主機 * ，選取要安裝 NFS VAAI 外掛程式的 ESXi 主機，然後選取 * 安裝 * 。</block>
   <block id="681ca77b2652713f7e6d867f281733ec" category="paragraph">只會顯示符合外掛程式安裝資格的 ESXi 主機。您可以在 vSphere Web Client 的「近期工作」區段中監控安裝進度。</block>
-  <block id="4969bf5d68bb071342161a9b29a23f5c" category="list-text">安裝完成後，您應該手動重新啟動 ESXi 主機。</block>
   <block id="d15e664257aa2207434ef9543a593a8d" category="paragraph">當 VMware 管理員重新啟動 ESXi 主機時，適用於 VMware vSphere 的 ONTAP 工具會自動偵測並啟用 NFS VAAI 外掛程式。</block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">接下來呢？</block>
   <block id="90ba1578c2c367413063e7228d8586b5" category="paragraph">安裝 NFS VAAI 外掛程式並重新啟動 ESXi 主機之後，您必須針對 VAAI 複本卸載設定正確的 NFS 匯出原則。在 NFS 環境中設定 VAAI 時，請將匯出原則規則的下列需求設定為：</block>
@@ -2171,4 +2160,7 @@
   <block id="76dc960090031506bd84c78f38fe040e" category="paragraph">升級後，如果虛擬機器的規範狀態已過期，請使用下列步驟重新套用儲存原則：</block>
   <block id="0f4e59ab0634b5a1f97823bc94b0f039" category="paragraph">在 * VM 儲存原則相容性 * 下的法規遵循狀態顯示為 * 過時 * 。</block>
   <block id="3e771c8c630b8cfd1ddd0dfc7e8e7c85" category="list-text"><block ref="3e771c8c630b8cfd1ddd0dfc7e8e7c85" category="inline-link-macro-rx"></block></block>
+  <block id="395ddb6ca1b9948e32145f8fa1a9201e" category="paragraph">將下列參數設定為預設值：</block>
+  <block id="0882ef7c28701c98bdd62f72da8634a7" category="list-text">請確定您擁有 ESXi 主機和 vSphere 7.0U3 最新修補程式或更新版本，以及 ONTAP 9.14.1 或更新版本。</block>
+  <block id="2bf603021962a26e3bcb2bea93110c9f" category="list-text">安裝後手動重新啟動 ESXi 主機。</block>
 </blocks>

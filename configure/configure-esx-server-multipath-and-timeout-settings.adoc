@@ -50,23 +50,14 @@ NOTE: 您可以展開 ESXi 主機以查看目前的值。
 
 === HA/CNA 介面卡設定
 
-設定 NetApp 儲存系統的建議 HBA 逾時設定。
+將下列參數設定為預設值：
 
-|===
-| 參數 | 將此值設為 ... 
-
-
-| disk.QFullSampleSize. | 32 適用於所有組態。設定此值有助於避免I/O錯誤。 
-
-
-| disk.QFullThreshold | 8 適用於所有組態。設定此值有助於避免I/O錯誤。 
+* disk.QFullSampleSize.
+* disk.QFullThreshold
+* Emulex FC HBA逾時
+* QLogic FC HBA逾時
 
 
-| Emulex FC HBA逾時 | 預設值。 
-
-
-| QLogic FC HBA逾時 | 預設值。 
-|===
 
 
 === MPIO 設定
