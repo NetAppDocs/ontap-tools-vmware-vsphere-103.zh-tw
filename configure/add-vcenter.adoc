@@ -11,7 +11,7 @@ summary: 將 vCenter Server 執行個體新增至 VMware vSphere 的 ONTAP 工�
 
 
 [role="lead"]
-將 vCenter Server 執行個體新增至 VMware vSphere 的 ONTAP 工具，以設定，管理及保護 vCenter Server 環境中的虛擬資料存放區。
+將 vCenter Server 執行個體新增至 VMware vSphere 的 ONTAP 工具，以設定，管理及保護 vCenter Server 環境中的虛擬資料存放區。新增多個 vCenter Server 執行個體時，需要自訂 CA 憑證才能在 ONTAP 工具和每個 vCenter Server 之間進行安全通訊。
 
 *關於此工作*
 

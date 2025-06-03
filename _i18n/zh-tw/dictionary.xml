@@ -767,7 +767,6 @@
   <block id="02ecc951ba9c7de4ba8def4213f1982e" category="list-text">若要檢視受保護的主機叢集、請瀏覽至 * NetApp ONTAP tools* &gt; * Protection * &gt; * 主機叢集關係 * 。</block>
   <block id="ded8026201084be2fda01a73c0b6a45c" category="summary">您可以使用適用於 VMware vSphere 遠端外掛程式介面的 ONTAP 工具，向 vCenter Server 執行個體註冊 VASA Provider 。</block>
   <block id="062e7967273cea76dff9c3579a0c44db" category="doc">向 vCenter Server 執行個體登錄 VASA Provider</block>
-  <block id="8ce287b63bedf11bff1339b770533de1" category="paragraph">您可以使用適用於 VMware vSphere 的 ONTAP 工具，向 vCenter Server 執行個體註冊 VASA Provider 。VASA Provider 設定區段會顯示所選 vCenter Server 的 VASA Provider 登錄狀態。</block>
   <block id="1767c8dcd2dacb5056d2a398b5761669" category="list-text">選擇 * 設定 * &gt; * VASA 提供者設定 * 。VASA Provider 登錄狀態會顯示為「未登錄」。</block>
   <block id="600ff4b29760f4ad12573092ddf700ed" category="list-text">選擇 * 註冊 * 按鈕以註冊 VASA 提供者。</block>
   <block id="30219dec23be3c12e0dc980cd1686912" category="list-text">輸入 VASA Provider 的名稱，並提供 ONTAP 工具以取得 VMware vSphere 應用程式使用者認證，然後選取 * 註冊 * 。</block>
@@ -953,12 +952,10 @@
   <block id="bbd46d16a0b9c56c79719db1f0a2b9a8" category="paragraph">請使用下列工作表來收集 VMware vSphere 初始部署之 ONTAP 工具的必要資訊：適用於 VMware vSphere 初始部署的 ONTAP 工具：</block>
   <block id="9b97b7bd5e0a87be7bf218224ada83cf" category="cell">需求</block>
   <block id="d9fa81fca11f55d9fd9f33b399ab9cd6" category="cell">您的價值</block>
-  <block id="89d40dff7639b41cbef7fe2a44f484ba" category="cell">ONTAP 工具應用程式的 IP 位址</block>
   <block id="5759f8c1a9261b4c6c0c86f5089433b5" category="cell">第一個節點的 DNS 主機名稱</block>
   <block id="68eeeed01bf11dc7edb656408cbfd0b6" category="cell">主要DNS伺服器</block>
   <block id="9fab0542abb763e3e75e782994d85d07" category="cell">次要DNS伺服器</block>
   <block id="a8887a6c969074f8ef768152e95c492b" category="cell">DNS 搜尋網域</block>
-  <block id="b2aa01474bea61170041c002c6ac208a" category="cell">主節點的 IPv4 位址</block>
   <block id="8e7f18a32aaa409ac6db22c6061404a7" category="cell">IPv4 位址的子網路遮罩</block>
   <block id="6eb16330b386af07329e0c9d0a1c2421" category="cell">IPv4 位址的預設閘道</block>
   <block id="92abdbc0e1cb9b88fc2be7c70ef79e37" category="cell">IPv6 位址（選用）</block>
@@ -1124,8 +1121,6 @@
   <block id="d0c12810d8bb376bdd62e0a7dcb8f3ef" category="inline-link-macro">將儲存後端與 vCenter Server 執行個體建立關聯</block>
   <block id="349dea55081cba7988d2e74a569b149b" category="list-text"><block ref="349dea55081cba7988d2e74a569b149b" category="inline-link-macro-rx"></block></block>
   <block id="e6fbc0b9673f8c86726688d7607fc8f5" category="inline-image-macro">六</block>
-  <block id="acfa27b57a294a787f715e773cc9d67b" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block>如果您使用多個 vCenter Server ，請升級憑證</block>
-  <block id="7a141a550c6b7316b61d038ab322ca86" category="paragraph">使用多個 vCenter Server 時，請將自我簽署的憑證升級為憑證授權單位（ CA ）簽署的憑證。</block>
   <block id="12e67aac3e7f9227cc35f8f047d7dc74" category="inline-image-macro">七</block>
   <block id="85fa32c6f1935c07720a211f20305579" category="paragraph-title"><block ref="36915574c413876eaa75cbd48f69fd00" category="inline-image-macro-rx" type="image"></block>（選用）啟用 SRA 保護</block>
   <block id="461016ffd7a6c7ca138e75fad0c9b7ce" category="paragraph">啟用 SRA 功能以設定災難恢復並保護 NFS 或 VMFS 資料存放區。</block>
@@ -1216,7 +1211,6 @@
   <block id="c5e37bc00c030bf0bbf393fbb0102c75" category="summary">刪除 VMware vSphere 部署的 ONTAP 工具之後、您應該清理部署期間建立的 FlexVolumes 。如果您已使用專用的 ONTAP 叢集進行部署、則應該清理 FlexVolumes 、因為部署會建立許多未使用的 FlexVolumes 、導致效能降低。</block>
   <block id="fc670824c9b9087edaedbd8931be914a" category="doc">移除 FlexVol Volume</block>
   <block id="94ba231101263cc02a5bbd35865c2569" category="paragraph">當您使用專屬的 ONTAP 叢集 ONTAP 來部署 VMware 工具時，它會建立許多未使用的 FlexVol 磁碟區。移除 VMware vSphere 的 ONTAP 工具之後，您應該移除 FlexVol 磁碟區，以避免可能的效能影響。</block>
-  <block id="cde906e65e5da4b3f2fe17b754df15ce" category="list-text">從主節點 VM 判斷適用於 VMware vSphere 部署類型的 ONTAP 工具。</block>
   <block id="6aa67ccabd12c5a1df1d1b2ed5e708fe" category="paragraph">_cat /opt/netapp/meta/Ansible _vars.yaml | grep -i protocol_</block>
   <block id="3fcb4ec0988a47a419299691b19d04fa" category="paragraph">如果是 iSCSI 部署，您也需要刪除 igroup 。</block>
   <block id="80ca6447cbd8bd1ace2853c2fc7c8028" category="list-text">取得 FlexVol 磁碟區清單。</block>
@@ -1498,7 +1492,6 @@
   <block id="bd294460cf119253eaf3ca5c5ff6bb68" category="summary">在重新啟動來賓作業系統作業期間、 grub 功能表會顯示重設維護主控台使用者密碼的選項。</block>
   <block id="f0b6145036d556579acfe2db1be06830" category="doc">重設維護主控台使用者密碼</block>
   <block id="748a86e8da423b16c861e9ba78527903" category="paragraph">在來賓作業系統重新啟動作業期間、 grub 功能表會顯示重設維護主控台使用者密碼的選項。此選項用於更新對應 VM 上的維護主控台使用者密碼。重設密碼完成後、 VM 會重新啟動以設定新密碼。在 HA 部署案例中、 VM 重新啟動後、其他兩個 VM 上的密碼會自動更新。</block>
-  <block id="b0bc3604d114546b6aae8777d8ac55fc" category="admonition">對於用於 VMware vSphere HA 部署的 ONTAP 工具，您應該變更主要節點（即 node1 ）上的維護主控台使用者密碼。</block>
   <block id="2ba7610b112ed8fa5391c57f6419a68b" category="list-text">登入 vCenter Server</block>
   <block id="2b9e667aee365fdcad035cc69436d9d5" category="inline-image-macro">重設維護使用者密碼</block>
   <block id="9c53638886d156ef1724c25c3b171528" category="list-text">在虛擬機器上按一下滑鼠右鍵、然後選取 * 電源 * &gt; * 在系統重新啟動期間重新啟動來賓作業系統 * 、您會看到下列畫面：<block ref="515bd311b9d352624722007b23637a91" category="inline-image-macro-rx" type="image"></block></block>
@@ -2121,7 +2114,6 @@
   <block id="0d8dd733c5e5b6b5d173af6dbb7e3dff" category="list-text">ONTAP 工具 IP 位址是與 ONTAP 工具通訊的主要介面。</block>
   <block id="0c72f5748e7c096b829fa8c13bdb6b7f" category="list-text">IPv4 是節點組態的 IP 位址元件，可用於在節點上啟用診斷 Shell 和 SSH 存取，以進行除錯和維護。</block>
   <block id="e10687c7d1d3c93cdb138a57d9d14bdb" category="list-text">節點互連 IP 位址用於內部通訊。</block>
-  <block id="3e691305a01d01aac8e30b75bd1d8a27" category="cell">用於內部通訊的節點互連 IP 位址</block>
   <block id="7ffde475c4ea55e9fc7c8c11becbc141" category="paragraph">如果 vCenter 在多租戶設定中扮演相關 SVM 的租戶，請使用 ONTAP 工具管理員來新增叢集。將儲存後端與 vCenter Server 建立關聯，以將其全域對應至已登入的 vCenter Server 執行個體。vCenter 租戶必須搭載所需的儲存虛擬機器（ Storage Virtual Machines ， SVM ）。這可讓 SVM 使用者配置 vVols 資料存放區。您可以使用 SVM 在 vCenter 中新增儲存設備。</block>
   <block id="112fa4a14bcd73096ce0a79df18e90c8" category="admonition">透過 vSphere 用戶端使用者介面設定儲存後端時，請務必注意 vVols 資料存放區不支援直接新增 SVM 使用者。</block>
   <block id="cbc2b2dc8b4ce185c5ef0381522a3cfc" category="admonition">您不需要管理員帳戶，即可將 vCenter 執行個體新增至 ONTAP 工具。您可以建立自訂角色，而無需具有有限權限的管理員帳戶。如 <block ref="31ec071db09c0fa81e221bfe3044a965" category="inline-link-macro-rx"></block> 需詳細資訊、請參閱。</block>
@@ -2163,4 +2155,13 @@
   <block id="395ddb6ca1b9948e32145f8fa1a9201e" category="paragraph">將下列參數設定為預設值：</block>
   <block id="0882ef7c28701c98bdd62f72da8634a7" category="list-text">請確定您擁有 ESXi 主機和 vSphere 7.0U3 最新修補程式或更新版本，以及 ONTAP 9.14.1 或更新版本。</block>
   <block id="2bf603021962a26e3bcb2bea93110c9f" category="list-text">安裝後手動重新啟動 ESXi 主機。</block>
+  <block id="a9a74d98e6d11230d876df92acb424fd" category="paragraph">將 vCenter Server 執行個體新增至 VMware vSphere 的 ONTAP 工具，以設定，管理及保護 vCenter Server 環境中的虛擬資料存放區。新增多個 vCenter Server 執行個體時，需要自訂 CA 憑證才能在 ONTAP 工具和每個 vCenter Server 之間進行安全通訊。</block>
+  <block id="07c9ecda15aaf26d8eef3770025ec27c" category="paragraph">您可以使用適用於 VMware vSphere 的 ONTAP 工具，向 vCenter Server 執行個體註冊 VASA Provider 。VASA Provider 設定區段會顯示所選 vCenter Server 的 VASA Provider 登錄狀態。在多重 vCenter 部署中，請確保每個 vCenter Server 執行個體都有自訂 CA 憑證。</block>
+  <block id="42c7c15e79d589d9c277ebcfaf6f5cbd" category="cell">ONTAP 工具應用程式的 IP 位址。這是用於存取 ONTAP 工具 Web 介面的 IP 位址</block>
+  <block id="b88a0208d3e02d8e8542318a4bf1dae1" category="cell">用於內部通訊的 ONTAP 工具虛擬 IP 位址。此 IP 位址用於在包含多個 ONTAP 工具實例的設定中進行內部通訊。此 IP 位址不應與 ONTAP 工具應用程式的 IP 位址相同。</block>
+  <block id="5813391479b0e439cbd9b28d9c14a7b2" category="cell">第一個節點的 IPv4 位址。它是管理網路上節點管理介面的唯一 IPv4 位址。</block>
+  <block id="5ba022aa97c9316a9962bea92efe8e4f" category="paragraph-title"><block ref="ef78558f80439832e0f51cc22cee8b8c" category="inline-image-macro-rx" type="image"></block>如果您使用多個 vCenter Server 執行個體，請升級憑證</block>
+  <block id="cc2976705cd90914f7093a509084c243" category="paragraph">使用多個 vCenter Server 執行個體時，將自簽章憑證升級為憑證授權單位 (CA) 簽署的憑證。</block>
+  <block id="15f0aef685a07d8a64ee213328fd4abf" category="list-text">從第一個節點虛擬機器確定適用於 VMware vSphere 部署類型的 ONTAP 工具。</block>
+  <block id="843e69439f5c77bf5c54644b48190fc1" category="admonition">對於用於 VMware vSphere HA 部署的 ONTAP 工具，您應該變更第一個節點（即 node1）上的維護控制台使用者密碼。</block>
 </blocks>

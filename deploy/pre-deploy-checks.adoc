@@ -60,10 +60,10 @@ summary: 在部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該先
 | 需求 | 您的價值 
 
 
-| ONTAP 工具應用程式的 IP 位址 |  
+| ONTAP 工具應用程式的 IP 位址。這是用於存取 ONTAP 工具 Web 介面的 IP 位址 |  
 
 
-| 用於內部通訊的節點互連 IP 位址 |  
+| 用於內部通訊的 ONTAP 工具虛擬 IP 位址。此 IP 位址用於在包含多個 ONTAP 工具實例的設定中進行內部通訊。此 IP 位址不應與 ONTAP 工具應用程式的 IP 位址相同。 |  
 
 
 | 第一個節點的 DNS 主機名稱 |  
@@ -78,7 +78,7 @@ summary: 在部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該先
 | DNS 搜尋網域 |  
 
 
-| 主節點的 IPv4 位址 |  
+| 第一個節點的 IPv4 位址。它是管理網路上節點管理介面的唯一 IPv4 位址。 |  
 
 
 | IPv4 位址的子網路遮罩 |  
