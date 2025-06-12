@@ -67,6 +67,9 @@ MPIO 設定可定義 NetApp 儲存系統的偏好路徑。它們會判斷哪些�
 在高效能環境中、或是當您使用單一 LUN 資料存放區測試效能時、請考慮將循環（ VMW_PSP_RR ）路徑選擇原則（ PSP ）的負載平衡設定、從預設的 IOPS 設定 1000 變更為 1 。
 
 
+NOTE: MPIO 設定不適用於 NVMe、NVMe/FC 和 NVMe/TCP 協定。
+
+
 
 === NFS 設定
 

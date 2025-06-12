@@ -2164,4 +2164,5 @@
   <block id="cc2976705cd90914f7093a509084c243" category="paragraph">使用多個 vCenter Server 執行個體時，將自簽章憑證升級為憑證授權單位 (CA) 簽署的憑證。</block>
   <block id="15f0aef685a07d8a64ee213328fd4abf" category="list-text">從第一個節點虛擬機器確定適用於 VMware vSphere 部署類型的 ONTAP 工具。</block>
   <block id="843e69439f5c77bf5c54644b48190fc1" category="admonition">對於用於 VMware vSphere HA 部署的 ONTAP 工具，您應該變更第一個節點（即 node1）上的維護控制台使用者密碼。</block>
+  <block id="56564ecb20e9cb45429b432b22f216f4" category="admonition">MPIO 設定不適用於 NVMe、NVMe/FC 和 NVMe/TCP 協定。</block>
 </blocks>
