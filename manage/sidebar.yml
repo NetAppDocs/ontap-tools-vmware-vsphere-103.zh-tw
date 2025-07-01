@@ -6,6 +6,8 @@ entries:
   url: "/configure/dashboard-overview.html"
 - title: ONTAP toolTools Manager 使用者介面
   url: "/configure/manager-user-interface.html"
+- title: 了解 igroup 和匯出政策
+  url: "/manage/igroup-workflow.html"
 - title: 為 VMware vSphere 服務啟用 ONTAP 工具
   url: "/manage/enable-services.html"
 - title: 變更適用於 VMware vSphere 組態的 ONTAP 工具
