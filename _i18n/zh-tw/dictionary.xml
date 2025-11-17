@@ -2026,7 +2026,6 @@
   <block id="cd457aeee08a9f6476660a1f15284160" category="paragraph">新增硬碟後，請針對個別組態更新 VM 資源，然後重新啟動主要 VM 。</block>
   <block id="82c4bde04ac809c6d15f232949e072ce" category="paragraph">將會建立新的 HDD 。動態儲存資源配置程式會使用此 HDD 來產生或複寫磁碟區。</block>
   <block id="b06f0e274f6c746f0d30521b5c7f392e" category="list-text">將適用於 VMware vSphere 的 ONTAP 工具升級 ISO 上傳至內容庫。</block>
-  <block id="dd5382558ec4a47dfbc203fb25698772" category="list-text">在主 VM 頁面中，選擇 * Actions * &gt; * Edit Settings*</block>
   <block id="ef9e53e40d78d57abe78283a3603eb4e" category="list-text">在「編輯設定」視窗的「 *CD/DVD 磁碟機 * 」欄位下，選取內容庫 ISO 檔案。</block>
   <block id="54a029420d74c0dff69239155cf510b5" category="inline-image-macro">編輯設定</block>
   <block id="2c2d3019834934bb25449edddc396321" category="list-text">選取 ISO 檔案，然後選取 * 確定 * 。在 *CD/DVD 驅動器 * 字段中選擇 Connected （已連接）複選框。<block ref="af57a506b85774ef3a9f849e2b26e258" category="inline-image-macro-rx" type="image"></block></block>
@@ -2268,4 +2267,7 @@
   <block id="d416ef8edb2844634dbe8cfff2e77f9a" category="sidebar">了解 igroup 和匯出政策</block>
   <block id="019227f341a3522deb6e80d962611b44" category="sidebar">將適用於 VMware vSphere 9.xx 的 ONTAP 工具移轉至 10.3</block>
   <block id="d619f73b597358ef5140938f37254d97" category="sidebar">遷移到適用於 VMware vSphere 的最新 ONTAP 工具</block>
+  <block id="a928a1b805644ea87a643f7f8d60a477" category="list-text">在主 VM 頁面中，選擇「操作」&gt;「編輯設定」。若要確定主虛擬機器名稱：</block>
+  <block id="75a86edd37c9b2122be450b28fa09149" category="list-text">在任意節點上啟用診斷 shell</block>
+  <block id="e016d50ae26af4214e6a864c1c2c8db5" category="list-text">運行以下命令：<block ref="1ebe86b64a17c55ae52f4488cffae75f" prefix=" " category="inline-code"></block></block>
 </blocks>

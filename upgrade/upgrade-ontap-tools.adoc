@@ -128,7 +128,13 @@ NOTE: 支援從適用於 VMware vSphere 10.1 和 10.2 到 10.3 的 ONTAP 工具�
 
 .步驟
 . 將適用於 VMware vSphere 的 ONTAP 工具升級 ISO 上傳至內容庫。
-. 在主 VM 頁面中，選擇 * Actions * > * Edit Settings*
+. 在主 VM 頁面中，選擇「操作」>「編輯設定」。若要確定主虛擬機器名稱：
++
+.. 在任意節點上啟用診斷 shell
+.. 運行以下命令：
+`grep sourceHost /opt/netapp/meta/ansible_vars.yaml`
+
+
 . 在「編輯設定」視窗的「 *CD/DVD 磁碟機 * 」欄位下，選取內容庫 ISO 檔案。
 . 選取 ISO 檔案，然後選取 * 確定 * 。在 *CD/DVD 驅動器 * 字段中選擇 Connected （已連接）複選框。image:../media/primaryvm-edit-settings.png["編輯設定"]
 . 從 vCenter Server 開啟 ONTAP 工具的主控台。
